@@ -1,0 +1,30 @@
+#ifndef QUEUE_H
+#define QUEUE_H
+
+class Queue
+{
+  class Node
+  {
+    friend class Queue;
+    private:
+      Student* data;
+      Node*    next;
+  };
+
+  public:
+    Queue();
+    Queue(Queue&);
+    ~Queue();
+
+    void pushBack();
+    void popFront();
+    Node* front();
+    boolean empty();
+    
+  private:
+    Node *head;
+
+};
+#endif
+
+

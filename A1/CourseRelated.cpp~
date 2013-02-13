@@ -1,6 +1,6 @@
+#include "CourseRelated.h"
 
-
-RelatedCourse::RelatedCourse(string cc, string tm, int yr, int fg) 
+CourseRelated::CourseRelated(string cc, string tm, int yr, int fg) 
 	: courseCode(cc), term(tm), year(yr), finalGrade(fg)
 {
 
@@ -8,24 +8,23 @@ RelatedCourse::RelatedCourse(string cc, string tm, int yr, int fg)
 
 }
 
-RelatedCourse::~RelatedCourse()
+CourseRelated::~CourseRelated()
 {
 
 	cout<<"RelatedCourse deconstructor" << endl;
 
 }
 
-string RelatedCourse::getCourseCode()
+string CourseRelated::getCourseCode()
 {
 
 	return courseCode;
 
 }
 
-string RelatedCourse::print()
+string CourseRelated::print()
 {
 
 	return courseCode;
 
 }
-
