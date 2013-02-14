@@ -43,17 +43,6 @@ void Student::setCGPA(int cg) {cgpa = cg;}
 
 void Student::setMGPA(int mg) {mgpa = mg;}
 
-/*Student Student::getStudent(int num, studentnode n){
-  Student *tempStudent;
-  while(n != NULL){
-    if(n->data.getNum() == num){
-      tempStudent = n->data;
-    }
-    else n = n->next;
-  }
 
-  return tempStudent;
-
-}*/
 
 

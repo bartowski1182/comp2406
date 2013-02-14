@@ -34,8 +34,6 @@ class Student
 
     void setMGPA(int);
 
-    //Student getStudent(int, studentnode);
-
   private:
 
     int number;
