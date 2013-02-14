@@ -20,7 +20,7 @@ class CourseRelatedQueue
     ~CourseRelatedQueue();
 
     void pushBack(CourseRelated *);
-    void popFront();
+    bool popFront();
     CourseRelated* front();
     bool empty();
     
