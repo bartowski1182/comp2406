@@ -36,11 +36,18 @@ void CourseRelatedQueue::pushBack(CourseRelated *newRC)
 }
 
 //Removes first item from Queue, make sure to deallocate all memory
-void CourseRelatedQueue::popFront()
+bool CourseRelatedQueue::popFront()
 {
-  Node* tempNode = head;
-  head = head -> next;
-  delete tempNode;
+  if(head != 0)
+  {
+    Node* tempNode = head;
+    head = head -> next;
+    delete tempNode -> data;
+    delete tempNode;
+    return true;
+  }
+  else
+    return false;
 
 }
 
