@@ -40,6 +40,7 @@ void CourseRelatedQueue::popFront()
 {
   Node* tempNode = head;
   head = head -> next;
+  delete tempNode -> data;
   delete tempNode;
 
 }

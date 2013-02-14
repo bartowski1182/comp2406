@@ -7,8 +7,11 @@ class CourseRelated
     ~CourseRelated();
     std::string getCourseCode();
     std::string print();
+    bool canSetSourceCode(string);
+    bool canSetTerm(string);
 
   private:
+
     std::string courseCode;
     std::string term;
     int year;
