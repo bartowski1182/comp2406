@@ -1,4 +1,4 @@
-OBJECTS = main.o Form.o CourseRelatedQueue.o Student.o Cutaes.o
+OBJECTS = main.o Form.o CourseRelatedQueue.o Student.o Cutaes.o CourseRelated.o
 
 cutaes:			$(OBJECTS)
 			g++ -o cutaes $(OBJECTS) -lncurses
@@ -20,6 +20,7 @@ CourseRelated.o:	CourseRelated.cpp CourseRelated.h
 
 Student.o:		Student.cpp Student.h
 			g++ -c Student.cpp
+
 
 clean: 		
 			rm -f *.o cutaes	

@@ -1,5 +1,6 @@
 #ifndef CR_H
 #define CR_H
+#include <string>
 class CourseRelated
 {
   public:
@@ -7,8 +8,10 @@ class CourseRelated
     ~CourseRelated();
     std::string getCourseCode();
     std::string print();
-    bool canSetSourceCode(std::string);
+    bool canSetCourseCode(std::string);
     bool canSetTerm(std::string);
+    bool canSetYear(std::string);
+    bool canSetFinalGrade(std::string);
 
   private:
 
