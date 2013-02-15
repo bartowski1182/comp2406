@@ -25,6 +25,10 @@ string Application::getApplicationNumber(){
   return convert.str();
 }
 
+int Application::getApplicationNumberInt(){
+  return applicationNum;
+}
+
 string Application::getCourse(){
   return course;
 }

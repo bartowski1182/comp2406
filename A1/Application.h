@@ -16,6 +16,7 @@ class Application{
 		int getStatus();
 		string getStudentName();
 		string getCourseRelated();
+		int getApplicationNumberInt();
 		
 	private:
 		int applicationNum;

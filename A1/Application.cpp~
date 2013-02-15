@@ -21,7 +21,7 @@ Application::~Application()
 string Application::getApplicationNumber(){
 
   stringstream convert;
-  convert << num;
+  convert << applicationNum;
   return convert.str();
 }
 

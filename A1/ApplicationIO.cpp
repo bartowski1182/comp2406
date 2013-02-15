@@ -30,14 +30,14 @@ void ApplicationIO::saveApplications(ApplicationQueue* appQ) const
   applications.precision(2);
   applications<<fixed;
 
-  Node *currNode = appQ->getHead();
+  int headAppNum = appQ->front()->getApplicationNumberInt();
 
-   
+  bool running;
 
-  while(currNode != 0){
-    applications<<currNode->getData->getApplicationNumber() << "%" << currNode->data->getCourse() << "%" << currNode->data->getStatus() << "%" << currNode->data->getStudentName() << "%" << currNode->data->getCourseRelated() << endl;
-    currNode = currNode->next;
+  while(headAppNum != appQ->front()->getApplicationNumberInt()){
+    applications<<appQ->front()->getApplicationNumber() << "%" << appQ->front()->getCourse() << "%" << appQ->front()->getStatus() << "%" << appQ->front()->getStudentName() << "%" << appQ->front()->getCourseRelated() << endl;
+    appQ->pushBack(appQ->front());
+    running = appQ->popFront();
   }
-  
 
 }
