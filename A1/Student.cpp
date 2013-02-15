@@ -58,6 +58,11 @@ bool Student::canSetFirstName(string fn){
 }
 
 bool Student::canSetLastName(string ln){
+
+  if(ln.size() == 0){
+    return false;
+  }
+
   string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm-";
   if(ln.find_first_not_of(letters) != string::npos){
     return false;
@@ -68,9 +73,10 @@ bool Student::canSetLastName(string ln){
 }
 
 bool Student::canSetStudentNumber(string num){
+
   string numbers = "1234567890";
 
-  if(num.size() > 9){
+  if(num.size() != 9){
     return false;
   }
 
@@ -83,6 +89,10 @@ bool Student::canSetStudentNumber(string num){
 }
 
 bool Student::canSetEmail(string e){
+
+  if(e.size() == 0){
+    return false;
+  }
 
   string email = "@cmail.carleton.ca";
 
@@ -98,6 +108,11 @@ bool Student::canSetEmail(string e){
 
 bool Student::canSetMajor(string m)
 {
+
+  if(m.size() == 0){
+    return false;
+  }
+
   string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm- ";
   if(m.find_first_not_of(letters) != string::npos){
     return false;
@@ -135,7 +150,12 @@ bool Student::canSetCGPA(string c){
     return false;
   }
 
-  double cumul = atof(c);
+  char ch[c.size()];
+  for(int i = 0; i < 4; i++){
+    ch[i] = tolower(c.at(i));
+  }
+
+  double cumul = atof(ch);
 
   if(cumul < 0.0 || cumul > 12.0){
     return false;
@@ -157,7 +177,12 @@ bool Student::canSetMGPA(string m){
     return false;
   }
 
-  double major = atof(m);
+  char ch[m.size()];
+  for(int i = 0; i < 4; i++){
+    ch[i] = tolower(m.at(i));
+  }
+
+  double major = atof(ch);
 
   if(major < 0.0 || major > 12.0){
     return false;
@@ -166,7 +191,6 @@ bool Student::canSetMGPA(string m){
   return true;
 
 }
-
 
 
 

@@ -55,6 +55,11 @@ bool TaCourse::canSetCourseCode (string cc)
 
 bool CourseRelated::canSetTerm (string tm)
 {
+
+  	if(tm.size() == 0){
+    		return false;
+	}
+
 	int size = 0;
 	size = tm.size();
 	char newTerm[size+1];
@@ -103,6 +108,10 @@ bool CourseRelated::canSetYear(string yr)
 
 bool canSetSupervisor(string s)
 {
+
+  	if(s.size() == 0){
+    		return false;
+	}
 
 	string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
 

@@ -106,7 +106,7 @@ bool canSetSupervisor(string s)
 
 	string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
 
-	if(s.find_first_of_not(letters) != string::npos){
+	if(s.find_first_not_of(letters) != string::npos){
 		return false;
 	}
 
