@@ -12,8 +12,12 @@ ApplicationQueue::~ApplicationQueue()
 
 }
 
-ApplcationQueue::Node* ApplicationQueue::getHead(){
+ApplicationQueue::Node* ApplicationQueue::getHead(){
   return head;
+}
+
+Application* Node::getData(){
+  return data;
 }
 
 //Adds an item to back of Queue, make sure to check for all cases (empty list)
