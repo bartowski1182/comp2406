@@ -38,22 +38,6 @@ class Student
 
     void setMGPA(int);
 
-    bool canSetMGPA(string);
-
-    bool canSetCGPA(string);
-
-    bool canSetEmail(string);
-
-    bool canSetYear(string);
-
-    bool canSetMajor(string);
-
-    bool canSetStudentNumber(string);
-
-    bool canSetFirstName(string);
-
-    bool canSetLastName(string);
-
   private:
 
     int number;

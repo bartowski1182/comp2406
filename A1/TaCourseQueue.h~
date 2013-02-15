@@ -1,0 +1,33 @@
+#ifndef TAQUEUE_H
+#define TAQUEUE_H
+
+#include <string>
+#include "TaCourse.h"
+
+class TaCourseQueue
+{
+  class Node
+  {
+    friend class TaCourseQueue;
+    private:
+      TaCourse* data;
+      Node*    next;
+  };
+
+  public:
+    TaCourseQueue();
+    TaCourseQueue(TaCourseQueue&);
+    ~TaCourseQueue();
+
+    void pushBack(TaCourse *);
+    void popFront();
+    TaCourse* front();
+    bool empty();
+    
+  private:
+    Node *head;
+
+};
+#endif
+
+

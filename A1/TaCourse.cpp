@@ -1,4 +1,4 @@
-#include "CourseRelated.h"
+#include "TaCourse.h"
 #include <string>
 #include <iostream>
 #include <ctype.h>
@@ -6,28 +6,28 @@
 #include <stdlib.h>
 using namespace std;
 
-CourseRelated::CourseRelated(std::string cc, std::string tm, int yr, int fg) 
-	: courseCode(cc), term(tm), year(yr), finalGrade(fg)
+TaCourse::TaCourse(std::string cc, std::string tm, int yr, string s) 
+	: courseCode(cc), term(tm), year(yr), supervisor(s)
 {
-	cout<<"RelatedCourse constructor" << endl;
+	cout<<"TaCourse constructor" << endl;
 }
 
 CourseRelated::~CourseRelated()
 {
-	cout<<"RelatedCourse deconstructor" << endl;
+	cout<<"TaCourse deconstructor" << endl;
 }
 
-string CourseRelated::getCourseCode()
+string TaCourse::getCourseCode()
 {
 	return courseCode;
 }
 
-string CourseRelated::print()
+string TaCourse::print()
 {
 	return courseCode;
 }
 
-bool CourseRelated::canSetCourseCode (string cc)
+bool TaCourse::canSetCourseCode (string cc)
 {
 	
 	if (cc.size() != 9){
@@ -101,28 +101,14 @@ bool CourseRelated::canSetYear(string yr)
 
 }
 
-bool canSetFinalGrade(string fg)
+bool canSetSupervisor(string s)
 {
-	if(fg.size() < 5)
+
+	string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
+
+	if(s.find_first_not_of(letters) != string::npos){
 		return false;
-
-	char newFinalGrade[fg.size()];
-
-	char c;
-	for(int i = 0; i < 4; i++){
-		c = fg.at(i);
-		newFinalGrade[i] = tolower(c);
 	}
-
-	string numbers = "1234567890.";
-
-	if(fg.find_first_not_of(numbers) != string::npos)
-		return false;
-
-	double finalGradeDoub = atof(newFinalGrade);
-
-	if(finalGradeDoub < 0.0 || finalGradeDoub > 12.0)
-		return false;
 
 	return true;
 

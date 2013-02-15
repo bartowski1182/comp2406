@@ -1,0 +1,21 @@
+#ifndef COURSE_H
+#define COURSE_H
+using namespace std;
+#include <string>
+#include "ApplicationQueue.h"
+
+class Course{
+
+	public:
+		Course (string, ApplicationQueue*);
+		~Course();
+		void Course::setCourseName(string);
+		string Course::getCourseName();
+		ApplicationQueue* Course::getHead();
+	private:
+		string courseName;
+		ApplicationQueue* AHead;
+
+};
+
+#endif

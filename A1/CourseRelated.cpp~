@@ -89,7 +89,7 @@ bool CourseRelated::canSetYear(string yr)
 
 	string numbers = "1234567890";
 
-	if(yr.find_first_of(numbers) != string::npos)
+	if(yr.find_first_not_of(numbers) == string::npos)
 		return false;
 
 	int yearInt = atoi(newYear);
@@ -116,10 +116,10 @@ bool canSetFinalGrade(string fg)
 
 	string numbers = "1234567890.";
 
-	if(fg.find_first_of(numbers) != string::npos)
+	if(fg.find_first_not_of(numbers) == string::npos)
 		return false;
 
-	double finalGradeDoub = atof(fg);
+	double finalGradeDoub = atof(newFinalGrade);
 
 	if(finalGradeDoub < 0.0 || finalGradeDoub > 12.0)
 		return false;
