@@ -23,6 +23,7 @@ class CourseRelatedQueue
     bool popFront();
     CourseRelated* front();
     bool empty();
+    std::string stringOut();
     
   private:
     Node *head;

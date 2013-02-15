@@ -1,5 +1,5 @@
-#ifndef CR_H
-#define CR_H
+#ifndef TC_H
+#define TC_H
 #include <string>
 class TaCourse
 {

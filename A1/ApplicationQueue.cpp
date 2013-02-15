@@ -12,6 +12,10 @@ ApplicationQueue::~ApplicationQueue()
 
 }
 
+ApplicationQueue::Node* ApplicationQueue::getHead(){
+  return head;
+}
+
 //Adds an item to back of Queue, make sure to check for all cases (empty list)
 void ApplicationQueue::pushBack(Application *newApp)
 {

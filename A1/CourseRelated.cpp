@@ -1,8 +1,8 @@
 #include "CourseRelated.h"
 #include <string>
-#include <iostream>
 #include <ctype.h>
 #include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
 using namespace std;
 
@@ -22,7 +22,7 @@ string CourseRelated::getCourseCode()
 	return courseCode;
 }
 
-string CourseRelated::print()
+std::string CourseRelated::print()
 {
 	return courseCode;
 }
@@ -101,7 +101,7 @@ bool CourseRelated::canSetYear(string yr)
 
 }
 
-bool canSetFinalGrade(string fg)
+bool CourseRelated::canSetFinalGrade(string fg)
 {
 	if(fg.size() < 5)
 		return false;

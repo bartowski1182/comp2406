@@ -1,4 +1,4 @@
-OBJECTS = main.o Form.o CourseRelatedQueue.o Student.o Cutaes.o CourseRelated.o Course.o CourseQueue.o Application.o ApplicationQueue.o
+OBJECTS = main.o Form.o CourseRelatedQueue.o Student.o Cutaes.o CourseRelated.o Course.o CourseQueue.o Application.o ApplicationQueue.o ApplicationIO.o
 
 cutaes:			$(OBJECTS)
 			g++ -o cutaes $(OBJECTS) -lncurses
@@ -24,7 +24,7 @@ Course.o:		Course.cpp Course.h
 CourseQueue.o:		CourseQueue.cpp CourseQueue.h Course.h
 			g++ -c CourseQueue.cpp
 
-Application.o:		 Application.h Student.h ApplicationQueue.h CourseRelatedQueue.h Course.h
+Application.o:		Application.cpp Application.h Student.h ApplicationQueue.h CourseRelatedQueue.h Course.h
 			g++ -c Application.cpp
 
 ApplicationQueue.o:	ApplicationQueue.cpp ApplicationQueue.h Application.h

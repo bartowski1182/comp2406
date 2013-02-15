@@ -23,6 +23,7 @@ class ApplicationQueue
     bool popFront();
     Application* front();
     bool empty();
+    Node *getHead();
     
   private:
     Node *head;

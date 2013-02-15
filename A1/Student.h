@@ -4,11 +4,13 @@
 class Student
 {
   public:
-    Student(string="unknown", string = "unknown" int=000000000, string="unknown@carleton.ca", string="", int=0, int=0, int=0);
+    Student(string="unknown", string = "unknown", int=000000000, string="unknown@carleton.ca", string="", int=0, int=0, int=0);
     ~Student();
     string getFirstName();
 
     string getLastName();
+
+    string getName();
 
     int getNum();
 
@@ -60,7 +62,7 @@ class Student
     string firstName;
     string lastName;
     string email;
-    string major;
+    string sMajor;
     int yearStanding;
     int cgpa;
     int mgpa;

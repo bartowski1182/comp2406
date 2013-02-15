@@ -246,3 +246,5 @@ void Form::initForm()
   refresh();
   getch();
 }
+
+

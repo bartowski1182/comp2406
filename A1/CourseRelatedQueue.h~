@@ -10,7 +10,7 @@ class CourseRelatedQueue
   {
     friend class CourseRelatedQueue;
     private:
-      CourseRelated* data;
+      CourseRelated data;
       Node*    next;
   };
 
@@ -19,10 +19,11 @@ class CourseRelatedQueue
     CourseRelatedQueue(CourseRelatedQueue&);
     ~CourseRelatedQueue();
 
-    void pushBack();
-    void popFront();
+    void pushBack(CourseRelated *);
+    bool popFront();
     CourseRelated* front();
     bool empty();
+    std::string stringOut();
     
   private:
     Node *head;

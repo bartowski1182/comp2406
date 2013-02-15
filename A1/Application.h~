@@ -8,7 +8,7 @@ using namespace std;
 class Application{
 
 	public:
-		Application (string, int, Student*, CourseRelatedQueue*);
+		Application (string = "", int = 0, Student* = NULL, CourseRelatedQueue* = NULL);
 		~Application();
 		int AppNum ();
 	private:

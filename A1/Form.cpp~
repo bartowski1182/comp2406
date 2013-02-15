@@ -241,8 +241,14 @@ void Form::initForm()
   }
   
   noecho();
-  clrscr();
+  clear();
   mvprintw(LINES - 2, 0, "Program over, press any key\n");
   refresh();
   getch();
+}
+
+void Form::save(){
+
+  
+
 }

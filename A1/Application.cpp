@@ -2,6 +2,9 @@
 #include <iostream>
 #include <cstdlib>
 #include "Application.h"
+#include <stdlib.h>
+#include <sstream>
+using namespace std;
 
 Application::Application(string newCourse, int stat, Student* newStudent,
 	CourseRelatedQueue* CR)	: applicationNum(AppNum()), course(newCourse), status(stat), student(newStudent),
@@ -13,6 +16,31 @@ Application::Application(string newCourse, int stat, Student* newStudent,
 Application::~Application()
 {
 
+}
+
+string Application::getApplicationNumber(){
+
+  stringstream convert;
+  convert << applicationNum;
+  return convert.str();
+}
+
+string Application::getCourse(){
+  return course;
+}
+
+int Application::getStatus(){
+  return status;
+}
+
+string Application::getStudentName(){
+  return student->getName();
+}
+
+string Application::getCourseRelated(){
+  
+  return CRHead->stringOut();
+    
 }
 
 int Application::AppNum()

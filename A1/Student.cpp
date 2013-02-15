@@ -2,9 +2,9 @@
 using namespace std;
 #include <string>
 #include "Student.h"
+#include <stdlib.h>
 
-Student::Student(string fn, string ln, int nu, string em, string m, int y, int cg, int mg)
-	: firstName(fn), lastName(ln), number(nu), email(em), major(m), yearStanding(y), cgpa(cg), mgpa(mg)
+Student::Student(string fn, string ln, int nu, string em, string m, int y, int cg, int mg) : firstName(fn), lastName(ln), number(nu), email(em), sMajor(m), yearStanding(y), cgpa(cg), mgpa(mg)
 {
   cout<<"Student constructor" << endl;
 }
@@ -23,7 +23,7 @@ int Student::getNum() {return number;}
 
 string Student::getEmail() {return email;}
 
-string Student::getMajor() {return major;}
+string Student::getMajor() {return sMajor;}
 
 int Student::getYear() {return yearStanding;}
 
@@ -39,13 +39,15 @@ void Student::setNum(int num) {number = num;}
 
 void Student::setEmail(string em) {email = em;}
 
-void Student::setMajor(string m) {major = m;}
+void Student::setMajor(string m) {sMajor = m;}
 
 void Student::setYear(int year) {yearStanding = year;}
 
 void Student::setCGPA(int cg) {cgpa = cg;}
 
 void Student::setMGPA(int mg) {mgpa = mg;}
+
+string Student::getName() { return firstName + " " + lastName; }
 
 bool Student::canSetFirstName(string fn){
   string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm-";
@@ -100,7 +102,9 @@ bool Student::canSetEmail(string e){
     return false;
   }
 
-  if(e.find_first_of(" ")
+  if(e.find_first_of(" ") != string::npos){
+    return false;
+  }
 
   return true;
 
@@ -182,9 +186,9 @@ bool Student::canSetMGPA(string m){
     ch[i] = tolower(m.at(i));
   }
 
-  double major = atof(ch);
+  double mGrade = atof(ch);
 
-  if(major < 0.0 || major > 12.0){
+  if(mGrade < 0.0 || mGrade > 12.0){
     return false;
   }
 

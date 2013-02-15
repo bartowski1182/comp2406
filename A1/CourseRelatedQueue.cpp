@@ -12,6 +12,25 @@ CourseRelatedQueue::~CourseRelatedQueue()
 
 }
 
+std::string CourseRelatedQueue::stringOut(){
+  if(head == 0)
+    return "";
+
+  Node* currNode = head;
+
+  string tempString = currNode->data->print();
+
+  currNode=currNode->next;
+
+  while(currNode != 0){
+    tempString = tempString + ", " + currNode->data->print();
+    currNode = currNode->next;
+  }
+
+  return tempString;
+    
+}
+
 //Adds an item to back of Queue, make sure to check for all cases (empty list)
 void CourseRelatedQueue::pushBack(CourseRelated *newRC)
 {

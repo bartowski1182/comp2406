@@ -4,11 +4,13 @@
 class Student
 {
   public:
-    Student(string="unknown", string = "unknown" int=000000000, string="unknown@carleton.ca", string="", int=0, int=0, int=0);
+    Student(string="unknown", string = "unknown", int=000000000, string="unknown@carleton.ca", string="", int=0, int=0, int=0);
     ~Student();
     string getFirstName();
 
     string getLastName();
+
+    string getName();
 
     int getNum();
 
@@ -37,6 +39,22 @@ class Student
     void setCGPA(int);
 
     void setMGPA(int);
+
+    bool canSetMGPA(string);
+
+    bool canSetCGPA(string);
+
+    bool canSetEmail(string);
+
+    bool canSetYear(string);
+
+    bool canSetMajor(string);
+
+    bool canSetStudentNumber(string);
+
+    bool canSetFirstName(string);
+
+    bool canSetLastName(string);
 
   private:
 
