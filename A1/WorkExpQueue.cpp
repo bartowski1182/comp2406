@@ -1,18 +1,41 @@
-#include "CourseRelatedQueue.h"
+#include "WorkExpQueue.h"
 
 using namespace std;
 
-CourseRelatedQueue::CourseRelatedQueue() : head(0) { }
+WorkExpQueue::WorkExpQueue() : head(0) { }
 
 
 //Deallocate All Memory
-CourseRelatedQueue::~CourseRelatedQueue()
+WorkExpQueue::~WorkExpQueue()
 {
 
 
 }
 
-std::string CourseRelatedQueue::stringOut(){
+//Adds an item to back of Queue, make sure to check for all cases (empty list)
+void WorkExpQueue::pushBack(WorkExp *newWE)
+{
+
+  Node* tempNode = new Node;
+  tempNode->data = newWE;
+  tempNode -> next = 0;
+
+  if(head == 0){
+    head = tempNode;
+    return;
+  }
+
+  Node *currNode = head;
+  while(currNode -> next != 0)
+  {
+    currNode = currNode -> next;
+  }
+
+  currNode -> next = tempNode;
+
+}
+
+std::string WorkExpQueue::stringOut(){
   if(head == 0)
     return "";
 
@@ -31,31 +54,8 @@ std::string CourseRelatedQueue::stringOut(){
     
 }
 
-//Adds an item to back of Queue, make sure to check for all cases (empty list)
-void CourseRelatedQueue::pushBack(CourseRelated *newRC)
-{
-
-  Node* tempNode = new Node;
-  tempNode->data = newRC;
-  tempNode -> next = 0;
-
-  if(head == 0){
-    head = tempNode;
-    return;
-  }
-
-  Node *currNode = head;
-  while(currNode -> next != 0)
-  {
-    currNode = currNode -> next;
-  }
-
-  currNode -> next = tempNode;
-
-}
-
 //Removes first item from Queue, make sure to deallocate all memory
-bool CourseRelatedQueue::popFront()
+bool WorkExpQueue::popFront()
 {
   if(head != 0)
   {
@@ -71,13 +71,13 @@ bool CourseRelatedQueue::popFront()
 }
 
 //Returns a pointer to the first Node
-CourseRelated* CourseRelatedQueue::front()
+WorkExpQueue* WorkExpQueue::front()
 {
   return head -> data;
 }
 
 //Checks to see if the Linked List is empty... ie Check to see if head is NULL
-bool CourseRelatedQueue::empty()
+bool WorkExpQueue::empty()
 {
   return head == 0;
 }

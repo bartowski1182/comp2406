@@ -12,19 +12,15 @@ using namespace std;
 class ApplicationIO
 {
 
-  class Node
-  {
-    friend class ApplicationQueue;
-    private:
-      Application* data;
-      Node*    next;
-  };
+
 
   public:
     ApplicationIO();
     ~ApplicationIO();
     
     void saveApplications(ApplicationQueue*) const;
+
+    void loadApplications(ApplicationQueue*) const;
 
 };
 

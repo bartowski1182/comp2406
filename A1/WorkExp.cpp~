@@ -1,6 +1,6 @@
 #include "WorkExp.h"
 
-WorkExp::WorkExp(std::string res, int m, std::string sd, std::string ed) : responsibilities(res), months(m), 
+WorkExp::WorkExp(std::string loc, std::string res, int m, std::string sd, std::string ed) : location(loc) responsibilities(res), months(m), 
 	startDate(sd), endDate(ed)
 {
 

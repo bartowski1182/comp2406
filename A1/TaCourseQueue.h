@@ -23,6 +23,7 @@ class TaCourseQueue
     bool popFront();
     TaCourse* front();
     bool empty();
+    std::string stringOut();
     
   private:
     Node *head;

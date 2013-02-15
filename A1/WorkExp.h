@@ -1,10 +1,12 @@
-#include "WorkExp.h"
-
+#ifndef WORKEXP_H
+#define WORKEXP_H
+using namespace std;
+#include <string>
 class WorkExp
 {
 
   public:
-    WorkExp(std::string == "", int = 0; std::string = "", std::string = "");
+    WorkExp(string = "", int = 0, string = "", string = "");
     ~WorkExp();
     
     string getResponsibilities();
@@ -13,16 +15,17 @@ class WorkExp
     int getMonths();
     bool canSetResponsibilities(string);
     bool canSetMonths(string);
+    string print();
 
   private:
     string responsibilities;
     string startDate;
     string endDate;
-    int months
+    int months;
 
 };
 
-
+#endif
 
 
 

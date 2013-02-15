@@ -35,9 +35,50 @@ void ApplicationIO::saveApplications(ApplicationQueue* appQ) const
   bool running;
 
   while(headAppNum != appQ->front()->getApplicationNumberInt()){
-    applications<<appQ->front()->getApplicationNumber() << "%" << appQ->front()->getCourse() << "%" << appQ->front()->getStatus() << "%" << appQ->front()->getStudentName() << "%" << appQ->front()->getCourseRelated() << endl;
+    applications<<appQ->front()->getApplicationNumber() << "%" << appQ->front()->getCourse() << "%" << appQ->front()->getStatus() << "%" << appQ->front()->getStudentName() << "%" << appQ->front()->getCourseRelated() << "%" << appQ->front()->getTaCourse() << "%" << appQ->front()->getWorkExp() << endl;
     appQ->pushBack(appQ->front());
     running = appQ->popFront();
   }
 
 }
+
+void ApplicationIO::loadApplications(ApplicationQueue* appQ) const
+{
+  ifstream applications("applications.txt", ios::in);
+  
+  if(!applications){
+    cout<<"Could not open file applications.txt" << endl;
+    exit(1);
+  }
+
+  char input[500];
+  int appNum;
+  string course;
+  int status;
+  string student;
+  CourseRelatedQueue* CRHead;
+  TaCourseQueue* TCHead;
+  WorkExpQueue* WEHead;
+  string tempString;
+  
+  while(!applications.eof()){
+	applications.getline(input, 500, '%');
+	appNum = atoi(input);
+        applications.getline(input, 500, '%');
+	course = input;
+	applications.getline(input, 500, '%');
+	status = atoi(input);
+	applications.getline(input, 500, '%');
+	student = input;
+	applications.getline(input, 500, '%');
+	tempString = input;
+	int i = 0;
+	while(tempString.at(i) != '\0'){
+	  tempString.first_first_of("#"
+	}
+	
+	
+  }
+
+}
+

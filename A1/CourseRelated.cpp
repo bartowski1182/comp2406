@@ -24,7 +24,11 @@ string CourseRelated::getCourseCode()
 
 std::string CourseRelated::print()
 {
-	return courseCode;
+	std::stringstream outYear;
+	outYear << year;
+	std::stringstream outGrade;
+	outGrade << finalGrade;
+	return courseCode + "#" + term + "#" + outYear + "#" + outGrade;
 }
 
 bool CourseRelated::canSetCourseCode (string cc)

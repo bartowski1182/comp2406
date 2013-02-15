@@ -24,7 +24,9 @@ string TaCourse::getCourseCode()
 
 string TaCourse::print()
 {
-	return courseCode;
+	std::stringstream out;
+	out << year;
+	return courseCode + "#" + term + "#" + out.str() + "#" + supervisor;
 }
 
 bool TaCourse::canSetCourseCode (string cc)

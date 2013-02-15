@@ -18,7 +18,7 @@ std::string CourseRelatedQueue::stringOut(){
 
   Node* currNode = head;
 
-  string tempString = currNode->data.print();
+  string tempString = currNode->data->print();
 
   currNode=currNode->next;
 

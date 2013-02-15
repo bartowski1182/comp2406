@@ -20,6 +20,8 @@ class ApplicationIO
     
     void saveApplications(ApplicationQueue*) const;
 
+    void loadApplications(ApplicationQueue*) const;
+
 };
 
 #endif

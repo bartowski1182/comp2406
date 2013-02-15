@@ -6,9 +6,7 @@
 #include <sstream>
 using namespace std;
 
-Application::Application(string newCourse, int stat, Student* newStudent,
-	CourseRelatedQueue* CR)	: applicationNum(AppNum()), course(newCourse), status(stat), student(newStudent),
-	CRHead(CR)
+Application::Application(string newCourse, int stat, string newStudent, CourseRelatedQueue* CR,  TaCourseQueue* TC, WorkExpQueue* WE) : applicationNum(AppNum()), course(newCourse), status	(stat), student(newStudent), CRHead(CR), TCHead(TC), WEHead(WE)
 {
 	
 }
@@ -19,7 +17,6 @@ Application::~Application()
 }
 
 string Application::getApplicationNumber(){
-
   stringstream convert;
   convert << applicationNum;
   return convert.str();
@@ -38,13 +35,21 @@ int Application::getStatus(){
 }
 
 string Application::getStudentName(){
-  return student->getName();
+  return student;
 }
 
 string Application::getCourseRelated(){
   
   return CRHead->stringOut();
     
+}
+
+string Application::getTaCourse(){
+  return TCHead->stringOut();
+}
+
+string Application::getWorkExp(){
+  return WEHead->stringOut();
 }
 
 int Application::AppNum()

@@ -35,6 +35,25 @@ void TaCourseQueue::pushBack(TaCourse *newTC)
 
 }
 
+std::string TaCourseQueue::stringOut(){
+  if(head == 0)
+    return "";
+
+  Node* currNode = head;
+
+  string tempString = currNode->data->print();
+
+  currNode=currNode->next;
+
+  while(currNode != 0){
+    tempString = tempString + "$" + currNode->data->print();
+    currNode = currNode->next;
+  }
+
+  return tempString;
+    
+}
+
 //Removes first item from Queue, make sure to deallocate all memory
 bool TaCourseQueue::popFront()
 {

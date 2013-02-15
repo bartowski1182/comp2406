@@ -20,7 +20,7 @@ class TaCourseQueue
     ~TaCourseQueue();
 
     void pushBack(TaCourse *);
-    void popFront();
+    bool popFront();
     TaCourse* front();
     bool empty();
     

@@ -15,6 +15,11 @@ string WorkExp::getResponsibilities()
   return responsibilities;
 }
 
+string WorkExp::getResponsibilities()
+{
+  return responsibilities;
+}
+
 string WorkExp::getStartDate()
 {
   return startDate;
@@ -23,6 +28,13 @@ string WorkExp::getStartDate()
 string WorkExp::getEndDate()
 {
   return endDate;
+}
+
+string WorkExp::print()
+{
+  std::stringstream out;
+  out << months;
+  return responsibilities + "#" + out + "#" + startDate + "#" + endDate;
 }
 
 int WorkExp::getMonths()

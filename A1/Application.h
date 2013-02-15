@@ -4,11 +4,13 @@ using namespace std;
 #include <string>
 #include "Student.h"
 #include "CourseRelatedQueue.h"
+#include "TaCourseQueue.h"
+#include "WorkExpQueue.h"
 
 class Application{
 
 	public:
-		Application (string = "", int = 0, Student* = NULL, CourseRelatedQueue* = NULL);
+		Application (string = "", int = 0, string = "", CourseRelatedQueue* = NULL, TaCourseQueue* = NULL, WorkExpQueue* = NULL);
 		~Application();
 		int AppNum ();
 		string getApplicationNumber();
@@ -17,13 +19,17 @@ class Application{
 		string getStudentName();
 		string getCourseRelated();
 		int getApplicationNumberInt();
+		string getTaCourse();
+		string getWorkExp();
 		
 	private:
 		int applicationNum;
 		string course;
 		int status;
-		Student* student;
+		string student;
 		CourseRelatedQueue* CRHead;
+		TaCourseQueue* TCHead;
+		WorkExpQueue* WEHead;
 
 		/*
 		TaCourseQueue* TCHead;
