@@ -71,7 +71,7 @@ bool WorkExpQueue::popFront()
 }
 
 //Returns a pointer to the first Node
-WorkExpQueue* WorkExpQueue::front()
+WorkExp* WorkExpQueue::front()
 {
   return head -> data;
 }

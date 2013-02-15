@@ -46,7 +46,7 @@ std::string WorkExpQueue::stringOut(){
   currNode=currNode->next;
 
   while(currNode != 0){
-    tempString = tempString + ", " + currNode->data->print();
+    tempString = tempString + "$" + currNode->data->print();
     currNode = currNode->next;
   }
 

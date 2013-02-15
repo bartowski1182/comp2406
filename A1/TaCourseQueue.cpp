@@ -71,7 +71,7 @@ bool TaCourseQueue::popFront()
 }
 
 //Returns a pointer to the first Node
-TaCourseQueue* TaCourseQueue::front()
+TaCourse* TaCourseQueue::front()
 {
   return head -> data;
 }

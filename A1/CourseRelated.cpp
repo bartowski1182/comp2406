@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <iostream>
+#include <sstream>
 #include <stdlib.h>
 using namespace std;
 
@@ -28,7 +29,7 @@ std::string CourseRelated::print()
 	outYear << year;
 	std::stringstream outGrade;
 	outGrade << finalGrade;
-	return courseCode + "#" + term + "#" + outYear + "#" + outGrade;
+	return courseCode + "#" + term + "#" + outYear.str() + "#" + outGrade.str();
 }
 
 bool CourseRelated::canSetCourseCode (string cc)

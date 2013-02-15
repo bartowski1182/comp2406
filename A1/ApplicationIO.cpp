@@ -41,7 +41,7 @@ void ApplicationIO::saveApplications(ApplicationQueue* appQ) const
   }
 
 }
-
+/*
 void ApplicationIO::loadApplications(ApplicationQueue* appQ) const
 {
   ifstream applications("applications.txt", ios::in);
@@ -80,5 +80,5 @@ void ApplicationIO::loadApplications(ApplicationQueue* appQ) const
 	
   }
 
-}
+}*/
 

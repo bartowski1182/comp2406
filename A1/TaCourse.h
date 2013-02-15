@@ -4,7 +4,7 @@
 class TaCourse
 {
   public:
-    TaCourse(std::string = "", std::string = "", int = 0, int = 0);
+    TaCourse(std::string = "", std::string = "", int = 0, std::string = "");
     ~TaCourse();
     std::string getCourseCode();
     std::string print();
@@ -18,7 +18,7 @@ class TaCourse
     std::string courseCode;
     std::string term;
     int year;
-    string supervisor;
+    std::string supervisor;
 
 };
 #endif

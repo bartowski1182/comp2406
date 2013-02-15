@@ -1,4 +1,5 @@
 #include "WorkExp.h"
+#include <sstream>
 
 WorkExp::WorkExp(std::string res, int m, std::string sd, std::string ed) : responsibilities(res), months(m), 
 	startDate(sd), endDate(ed)
@@ -8,11 +9,6 @@ WorkExp::WorkExp(std::string res, int m, std::string sd, std::string ed) : respo
 
 WorkExp::~WorkExp(){
 
-}
-
-string WorkExp::getResponsibilities()
-{
-  return responsibilities;
 }
 
 string WorkExp::getResponsibilities()
@@ -34,7 +30,7 @@ string WorkExp::print()
 {
   std::stringstream out;
   out << months;
-  return responsibilities + "#" + out + "#" + startDate + "#" + endDate;
+  return responsibilities + "#" + out.str() + "#" + startDate + "#" + endDate;
 }
 
 int WorkExp::getMonths()

@@ -41,7 +41,7 @@ void ApplicationIO::saveApplications(ApplicationQueue* appQ) const
   }
 
 }
-
+/*
 void ApplicationIO::loadApplications(ApplicationQueue* appQ) const
 {
   ifstream applications("applications.txt", ios::in);
@@ -73,10 +73,12 @@ void ApplicationIO::loadApplications(ApplicationQueue* appQ) const
 	applications.getline(input, 500, '%');
 	tempString = input;
 	int i = 0;
-	while(input.get(i) != '\0')
+	while(tempString.at(i) != '\0'){
+	  tempString.first_first_of("#"
+	}
 	
 	
   }
-
+*/
 }
 

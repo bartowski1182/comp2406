@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <ctype.h>
+#include <sstream>
 #include <stdio.h>
 #include <stdlib.h>
 using namespace std;
@@ -12,7 +13,7 @@ TaCourse::TaCourse(std::string cc, std::string tm, int yr, string s)
 	cout<<"TaCourse constructor" << endl;
 }
 
-CourseRelated::~CourseRelated()
+TaCourse::~TaCourse()
 {
 	cout<<"TaCourse deconstructor" << endl;
 }
@@ -26,7 +27,7 @@ string TaCourse::print()
 {
 	std::stringstream out;
 	out << year;
-	return courseCode + "#" + term + "#" + out.str();
+	return courseCode + "#" + term + "#" + out.str() + "#" + supervisor;
 }
 
 bool TaCourse::canSetCourseCode (string cc)

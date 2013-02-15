@@ -10,7 +10,7 @@ class WorkExpQueue
   {
     friend class WorkExpQueue;
     private:
-      TaCourse* data;
+      WorkExp* data;
       Node*    next;
   };
 
@@ -21,7 +21,7 @@ class WorkExpQueue
 
     void pushBack(WorkExp *);
     bool popFront();
-    WorkExp* front();
+    WorkExpQueue* front();
     bool empty();
     std::string stringOut();
     
