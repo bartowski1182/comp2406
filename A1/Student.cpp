@@ -49,7 +49,7 @@ void Student::setMGPA(int mg) {mgpa = mg;}
 
 bool Student::canSetFirstName(string fn){
   string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm-";
-  if(fn.find_first_not_of(letters) != std::npos){
+  if(fn.find_first_not_of(letters) != string::npos){
     return false;
   }
   
@@ -59,7 +59,7 @@ bool Student::canSetFirstName(string fn){
 
 bool Student::canSetLastName(string ln){
   string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm-";
-  if(ln.find_first_not_of(letters) != std::npos){
+  if(ln.find_first_not_of(letters) != string::npos){
     return false;
   }
   
@@ -74,7 +74,7 @@ bool Student::canSetStudentNumber(string num){
     return false;
   }
 
-  if(num.find_first_not_of(numbers) != std::npos){
+  if(num.find_first_not_of(numbers) != string::npos){
     return false;
   }
 
@@ -86,7 +86,7 @@ bool Student::canSetEmail(string e){
 
   string email = "@cmail.carleton.ca";
 
-  if(e.find(email) == std::npos){
+  if(e.find(email) == string::npos){
     return false;
   }
 
