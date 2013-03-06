@@ -1,0 +1,116 @@
+#include "UndergradStudent.h"
+using namespace std;
+
+
+UndergradStudent::UndergradStudent(string fn, string ln, string nu, string em, string m, string y, string cg, string mg) : Student(fn, ln, nu, em), sMajor(m), yearStanding(y), cgpa(cg), mgpa(mg)
+{
+
+}
+
+UndergradStudent::~UndergradStudent()
+{
+
+}
+
+string UndergradStudent::getMajor() {return sMajor;}
+
+string UndergradStudent::getYear() {return yearStanding;}
+
+string UndergradStudent::getCGPA() {return cgpa;}
+
+string UndergradStudent::getMGPA() {return mgpa;}
+
+void UndergradStudent::setMajor(string m) {sMajor = m;}
+
+void UndergradStudent::setYear(string year) {yearStanding = year;}
+
+void UndergradStudent::setCGPA(string cg) {cgpa = cg;}
+
+void UndergradStudent::setMGPA(string mg) {mgpa = mg;}
+
+
+bool UndergradStudent::canSetMajor(string m)
+{
+
+  if(m.size() == 0){
+    return false;
+  }
+
+  string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm- ";
+  if(m.find_first_not_of(letters) != string::npos){
+    return false;
+  }
+
+  return true;
+
+}
+
+bool UndergradStudent::canSetYear(string y){
+
+  if(y.size() != 1){
+    return false;
+  }
+
+  string numbers = "1234";
+  
+  if(y.find_first_not_of(numbers) != string::npos){
+    return false;
+  }
+
+  return true;
+
+}
+
+bool UndergradStudent::canSetCGPA(string c){
+
+  if(c.size() == 0){
+    return false;
+  }
+
+  string numbers = "1234567890.";
+ 
+  if(c.find_first_not_of(numbers) != string::npos){
+    return false;
+  }
+
+  char ch[c.size()];
+  for(int i = 0; i < 4; i++){
+    ch[i] = tolower(c.at(i));
+  }
+
+  double cumul = atof(ch);
+
+  if(cumul < 0.0 || cumul > 12.0){
+    return false;
+  }
+
+  return true;
+
+}
+
+bool UndergradStudent::canSetMGPA(string m){
+
+  if(m.size() == 0){
+    return false;
+  }
+
+  string numbers = "1234567890.";
+ 
+  if(m.find_first_not_of(numbers) != string::npos){
+    return false;
+  }
+
+  char ch[m.size()];
+  for(int i = 0; i < 4; i++){
+    ch[i] = tolower(m.at(i));
+  }
+
+  double mGrade = atof(ch);
+
+  if(mGrade < 0.0 || mGrade > 12.0){
+    return false;
+  }
+
+  return true;
+
+}

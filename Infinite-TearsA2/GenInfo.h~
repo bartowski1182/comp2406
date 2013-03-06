@@ -1,0 +1,45 @@
+#ifndef GENINFO_H
+#define GENINFO_H
+
+#include <curses.h>
+#include <string>
+#include "Student.h"
+#include "CourseLoader.h"
+
+#define GINUM_CHOI 10
+#define GIMAX_BUF 20
+
+
+class GenInfo
+{
+  public:
+    GenInfo(std::string*, Student **);
+    ~GenInfo();
+
+    //Function
+    bool initGenInfo();
+
+  private:
+    //Member Functions
+    void drawGenInfo(int);
+    int handleInput(char);
+    int handleSelection(int);
+    int initCourseView(int);
+    int drawCourseView(int);
+    int handleAccept();
+
+    //Data Members
+    int index;
+    int courseIndex;
+    int nBreaker;
+    std::string *course;
+    std::string *courseList;
+
+    Student *newStu;
+    CourseLoader *load;
+
+    std::string labels[GINUM_CHOI];
+    std::string textFields[GINUM_CHOI - 2];
+
+};
+#endif

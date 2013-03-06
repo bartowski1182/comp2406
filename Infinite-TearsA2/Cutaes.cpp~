@@ -1,0 +1,107 @@
+#include "Cutaes.h"
+using namespace std;
+
+Cutaes::Cutaes() { }
+
+Cutaes::~Cutaes() { }
+
+//This will be at the bottom of the control flow
+void Cutaes::initCutaes()
+{
+  //Have CourseQueue head here, send to the other menus when they're called
+  mainMenu();
+
+}
+
+//Write code for showing the main Menu
+void Cutaes::mainMenu()
+{
+  //WELCOME TO CUTAES
+  //PRESS 1 FOR STUDENT -> leads to studentMenu
+  //PRESS 2 FOR ADMIN -> leads to adminMenu
+  //PRESS Q TO QUIT
+
+  bool quit = false;
+
+  char c = '1';
+  
+  while(!quit)
+  {
+    switch(c)
+    {
+      case (char)'1': 
+        //Send CourseQueue head to student Menu
+        studentMenu(&applications);
+        quit = true;
+        break;
+      case (char)'2':
+        //Send CourseQueue head to admin Menu
+        adminMenu(&applications);
+        break;
+      case (char)'q':
+        quit = true;
+        break;
+        
+      default: 
+        //printw(LINES - 2, 0, "HIHI\n");
+        break;
+    }
+  }
+
+}
+
+//Write code for student menu
+void Cutaes::studentMenu(ApplicationQueue **aq)
+{
+  //WELCOME TO STUDENT MENU
+  //PRESS 1 TO CREATE AN APPLICATION
+  //PRESS 2 TO EDIT AN APPLICATION
+  //PRESS Q TO QUIT
+
+  Form *form;
+
+  bool quit = false;
+
+  char c = '1';
+  
+  while(!quit)
+  {
+    switch(c)
+    {
+      case (char)'1': 
+        //Send CourseQueue head to Form
+
+        //actual code
+        form = new Form("Science", aq);
+        form -> initForm();
+        delete form;
+
+        quit = true;
+        break;
+      case (char)'2':
+        //Send CourseQueue head to edit Menu
+        break;
+      case (char)'q':
+        quit = true;
+        break;
+        
+      default: 
+        //printw(LINES - 2, 0, "HIHI\n");
+        break;
+    }
+  }
+
+}
+
+//Write code for admin menu
+void Cutaes::adminMenu(ApplicationQueue **aq)
+{
+  //WELCOME TO ADMIN MENU
+  //PRESS 1 TO VIEW AN APPLICATION
+  //PRESS 2 TO ASSIGN A SUCCESSFUL APPLICANT
+  //PRESS 3 TO VIEW A SUMMARY OF PENDING APPLICATIONS
+  //PRESS 4 TO VIEW A SUMMARY OF ASSIGNED APPLICATIONS
+  //PRESS 5 TO VIEW AND EDIT A TA EVALUATION
+  //PRESS Q TO QUIT
+
+}

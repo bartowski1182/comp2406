@@ -1,0 +1,209 @@
+using namespace std;
+#include "Student.h"
+
+Student::Student(string fn, string ln, string nu, string em, string m, string y, string cg, string mg) : firstName(fn), lastName(ln), number(nu), email(em), sMajor(m), yearStanding(y), cgpa(cg), mgpa(mg)
+{
+  cout<<"Student constructor" << endl;
+}
+
+Student::~Student()
+{
+  cout<<"Student deconstructor\n";
+}
+    
+
+string Student::getFirstName() {return firstName;}
+
+string Student::getLastName() {return lastName;}
+
+string Student::getNum() {return number;}
+
+string Student::getEmail() {return email;}
+
+string Student::getMajor() {return sMajor;}
+
+string Student::getYear() {return yearStanding;}
+
+string Student::getCGPA() {return cgpa;}
+
+string Student::getMGPA() {return mgpa;}
+
+void Student::setFirstName(string fn) {firstName = fn;}
+
+void Student::setLastName(string ln) {lastName = ln;}
+
+void Student::setNum(string num) {number = num;}
+
+void Student::setEmail(string em) {email = em;}
+
+void Student::setMajor(string m) {sMajor = m;}
+
+void Student::setYear(string year) {yearStanding = year;}
+
+void Student::setCGPA(string cg) {cgpa = cg;}
+
+void Student::setMGPA(string mg) {mgpa = mg;}
+
+string Student::getName() { return firstName + " " + lastName; }
+
+
+bool Student::canSetFirstName(string fn){
+
+  if (fn.length() == 0) {
+    return false;
+  }
+
+  /*string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm-";
+  if(fn.find_first_not_of(letters) != string::npos){
+    return false;
+  }*/
+  
+  return true;
+
+}
+
+bool Student::canSetLastName(string ln){
+
+  if(ln.size() == 0){
+    return false;
+  }
+
+  string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm-";
+  if(ln.find_first_not_of(letters) != string::npos){
+    return false;
+  }
+  
+  return true;
+
+}
+
+bool Student::canSetStudentNumber(string num){
+
+  string numbers = "1234567890";
+
+  if(num.size() != 9){
+    return false;
+  }
+
+  if(num.find_first_not_of(numbers) != string::npos){
+    return false;
+  }
+
+  return true;
+
+}
+
+bool Student::canSetEmail(string e){
+
+  if(e.size() == 0){
+    return false;
+  }
+
+  string email = "@cmail.carleton.ca";
+
+  if(e.find(email) == string::npos){
+    return false;
+  }
+
+  if(e.find_first_of(" ") != string::npos){
+    return false;
+  }
+
+  return true;
+
+}
+
+bool Student::canSetMajor(string m)
+{
+
+  if(m.size() == 0){
+    return false;
+  }
+
+  string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm- ";
+  if(m.find_first_not_of(letters) != string::npos){
+    return false;
+  }
+
+  return true;
+
+}
+
+bool Student::canSetYear(string y){
+
+  if(y.size() != 1){
+    return false;
+  }
+
+  string numbers = "1234";
+  
+  if(y.find_first_not_of(numbers) != string::npos){
+    return false;
+  }
+
+  return true;
+
+}
+
+bool Student::canSetCGPA(string c){
+
+  if(c.size() == 0){
+    return false;
+  }
+
+  string numbers = "1234567890.";
+ 
+  if(c.find_first_not_of(numbers) != string::npos){
+    return false;
+  }
+
+  char ch[c.size()];
+  for(int i = 0; i < 4; i++){
+    ch[i] = tolower(c.at(i));
+  }
+
+  double cumul = atof(ch);
+
+  if(cumul < 0.0 || cumul > 12.0){
+    return false;
+  }
+
+  return true;
+
+}
+
+bool Student::canSetMGPA(string m){
+
+  if(m.size() == 0){
+    return false;
+  }
+
+  string numbers = "1234567890.";
+ 
+  if(m.find_first_not_of(numbers) != string::npos){
+    return false;
+  }
+
+  char ch[m.size()];
+  for(int i = 0; i < 4; i++){
+    ch[i] = tolower(m.at(i));
+  }
+
+  double mGrade = atof(ch);
+
+  if(mGrade < 0.0 || mGrade > 12.0){
+    return false;
+  }
+
+  return true;
+
+}
+
+
+
+
+
+
+
+
+  

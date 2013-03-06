@@ -1,0 +1,38 @@
+#ifndef RWEXP_H
+#define RWEXP_H
+
+#include <curses.h>
+#include <string>
+#include "Student.h"
+
+#define RWNUM_CHOI 7
+#define RWMAX_BUF 20
+
+
+class RWExp
+{
+  public:
+    RWExp(std::string);
+    ~RWExp();
+
+    //Function
+    int initRWExp();
+
+  private:
+    //Member Functions
+    void drawRWExp(int);
+    int handleInput(char);
+    int handleSelection(char);
+    int handleAccept();
+    int handleAdd();
+
+    //Data Members
+    int index;
+    int nBreaker;
+    std::string course;
+
+    std::string labels[RWNUM_CHOI];
+    std::string textFields[RWNUM_CHOI - 3];
+
+};
+#endif

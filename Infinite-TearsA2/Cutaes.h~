@@ -1,0 +1,24 @@
+#ifndef CUTAES_H
+#define CUTAES_H
+
+#include <curses.h>
+#include "Form.h"
+#include "ApplicationQueue.h"
+
+class Cutaes
+{
+  public:
+    Cutaes();
+    ~Cutaes();
+
+    void initCutaes();
+
+  private:
+    ApplicationQueue *applications;
+
+    void mainMenu();
+    void studentMenu(ApplicationQueue **);
+    void adminMenu();
+
+};
+#endif
