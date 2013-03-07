@@ -8,19 +8,19 @@ using namespace std;
 class GradStudent : public Student
 {
   public:
-    GradStudent(string="unknown", string = "unknown", string="000000000", string="unknown@carleton.ca", string="", string="unknown", string="unknown");
+    GradStudent(string="unknown", string = "unknown", string="000000000", string="unknown@carleton.ca", string="unknown", string="unknown", string="unknown");
     ~GradStudent();
 
-    static bool canSetYear(string);
+    static bool canSetResearch(string);
 
-    static bool canSetMajor(string);
-    static bool canSetMGPA(string);
+    static bool canSetProgram(string);
+    static bool canSetSuper(string);
 
-    void setMajor(string);
+    void setResearch(string);
 
-    void setYear(string);
+    void setProgram(string);
 
-    void setCGPA(string);
+    void setSuper(string);
 
     string getResearch();
 
@@ -40,3 +40,4 @@ class GradStudent : public Student
 };
 
 #endif
+

@@ -20,6 +20,14 @@ string Student::getNum() {return number;}
 
 string Student::getEmail() {return email;}
 
+string Student::getMajor() {return major;}
+
+string Student::getYear() {return year;}
+
+string Student::getCGPA() {return CGPA;}
+
+string Student::getMGPA() {return MGPA;}
+
 void Student::setFirstName(string fn) {firstName = fn;}
 
 void Student::setLastName(string ln) {lastName = ln;}
@@ -37,10 +45,10 @@ bool Student::canSetFirstName(string fn){
     return false;
   }
 
-  /*string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm-";
+  string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm-";
   if(fn.find_first_not_of(letters) != string::npos){
     return false;
-  }*/
+  }
   
   return true;
 

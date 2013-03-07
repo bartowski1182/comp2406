@@ -1,7 +1,7 @@
 using namespace std;
 #include "Student.h"
 
-Student::Student(string fn, string ln, string nu, string em) : firstName(fn), lastName(ln), number(nu), email(em)
+Student::Student(string fn, string ln, string nu, string em) : firstName(fn), lastName(ln), number(nu),                                                          email(em)
 {
   cout<<"Student constructor" << endl;
 }
@@ -19,6 +19,14 @@ string Student::getLastName() {return lastName;}
 string Student::getNum() {return number;}
 
 string Student::getEmail() {return email;}
+
+string Student::getMajor() {return major;}
+
+string Student::getYear() {return year;}
+
+string Student::getCGPA() {return CGPA;}
+
+string Student::getMGPA() {return MGPA;}
 
 void Student::setFirstName(string fn) {firstName = fn;}
 

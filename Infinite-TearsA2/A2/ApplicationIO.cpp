@@ -21,6 +21,39 @@ void ApplicationIO::saveApplications(ApplicationQueue* appQ) const
   if(appQ== 0)
     return;
 
+  ApplicationQueue::Node* current = appQ->getHead();
+
+
+  while(current != 0){
+    
+    ofstream application("./Applications/" + current->getCourse()->getCourseName(), ios::trunc);
+    if(!application)
+      cout << "Could not open file\n";
+
+
+    application << "General info" << endl;
+    application << current->getApplicationNumber() << endl;
+    application << current->getCourse()->getCourseName() << endl;
+    application << current->getStatus() << endl;
+    application << current->getStudentNum() << endl;
+    application << current->getStudentFirstName() << endl;
+    application << current->getStudentLastName() << endl;
+    application << current->getStudentEmail() << endl;
+ 
+    if(current->getStudentType() == 0){
+      application << ((UndergradStudent)(current->getStudent()))->getMajor() << endl;
+      application << ((UndergradStudent)(current->getStudent()))->getYear() << endl;
+      application << ((UndergradStudent)(current->getStudent()))->getCGPA() << endl;
+      application << ((UndergradStudent)(current->getStudent()))->getMGPA() << endl;
+    }
+    else{
+      application << ((GradStudent)(current->getStudent()))->getResearch() << endl;
+      application << ((GradStudent)(current->getStudent()))->getProgram() << endl;
+      application << ((GradStudent)(current->getStudent()))->getSuper() << endl;
+    }
+
+  }
+
   ofstream applications("applications.txt", ios::app);
   if(!applications){
     cout << "applications.txt could not be opened" << endl;
