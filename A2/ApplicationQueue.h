@@ -25,7 +25,10 @@ class ApplicationQueue
     bool popFront();
     Application* front();
     bool empty();
+    void clearData();
     Node *getHead();
+
+    int setQueueIntoArray(Application ***);
     
   private:
     Node *head;

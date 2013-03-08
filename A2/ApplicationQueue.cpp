@@ -9,13 +9,43 @@ ApplicationQueue::ApplicationQueue() : head(0) { }
 ApplicationQueue::~ApplicationQueue()
 {
 
+  Node *currNode = head;
+  Node *delNode;
+  while (currNode != 0) {
+    delNode = currNode;
+    currNode = currNode -> next;
+    delete delNode;
+  }
+}
 
+ApplicationQueue::ApplicationQueue(ApplicationQueue& oQueue)
+{
+  head = 0;
+
+  Node *oCurr = oQueue.head;
+  
+  while(oCurr != 0) {
+    pushBack(oCurr -> data);
+    
+    oCurr = oCurr -> next;
+  }
 }
 
 ApplicationQueue::Node* ApplicationQueue::getHead(){
   return head;
 }
 
+void ApplicationQueue::clearData() {
+
+  Node *currNode = head;
+  Node *delNode;
+  while (currNode != 0) {
+    delNode = currNode;
+    currNode = currNode -> next;
+    delete delNode -> data;
+    delete delNode;
+  }
+}
 
 
 //Adds an item to back of Queue, make sure to check for all cases (empty list)
@@ -50,8 +80,6 @@ bool ApplicationQueue::popFront()
   {
     Node* tempNode = head;
     head = head -> next;
-    if(tempNode != 0)
-      delete tempNode -> data;
     delete tempNode;
     return true;
   }
@@ -59,6 +87,31 @@ bool ApplicationQueue::popFront()
     return false;
 
 
+}
+
+int ApplicationQueue::setQueueIntoArray(Application ***appArray)
+{
+  int sizeOf = 0;
+
+  Node *currNode = head;
+/*
+  while(currNode != 0) {
+    sizeOf ++;
+    currNode = currNode -> next;
+  }
+  /*
+  *appArray = new Application*[sizeOf];
+
+  currNode = head;
+  int i = 0;
+  while (currNode != 0) {
+    Application *newApp = currNode -> data;
+    (*appArray)[i] = newApp;
+    i++;
+    currNode = currNode -> next;
+  }*/
+
+  return sizeOf;
 }
 
 //Returns a pointer to the first Node

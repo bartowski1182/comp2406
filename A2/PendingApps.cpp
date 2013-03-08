@@ -1,7 +1,8 @@
 #include "PendingApps.h"
 using namespace std;
 
-PendingApps::PendingApps() : index(0), nBreaker(0), choosePage(0), onePage(0)
+PendingApps::PendingApps(ApplicationQueue **aq) : index(0), nBreaker(0), choosePage(0), onePage(0),
+                                                  applications(aq)
 {
 
 }
@@ -31,7 +32,7 @@ int PendingApps::update()
       
       break;
     case 1: //For one course
-      onePage = new PendingOneCourse();
+      onePage = new PendingOneCourse(applications);
       onePage -> initPendOCourse();
       delete onePage;
 

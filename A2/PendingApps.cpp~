@@ -1,7 +1,8 @@
 #include "PendingApps.h"
 using namespace std;
 
-PendingApps::PendingApps() : index(0), nBreaker(0), choosePage(0), onePage(0)
+PendingApps::PendingApps(ApplicationQueue **aq) : index(0), nBreaker(0), choosePage(0), onePage(0),
+                                                  applications(aq)
 {
 
 }
@@ -31,8 +32,8 @@ int PendingApps::update()
       
       break;
     case 1: //For one course
-      onePage = new PendingOneCourse();
-      onePage -> initPendOCourse();
+      onePage = new PendingOneCourse(applications);
+      //onePage -> initPendOCourse();
       delete onePage;
 
       mvprintw(LINES - 2, 0, "Football is a sport");
@@ -40,6 +41,7 @@ int PendingApps::update()
 
       nBreaker = index; //temp kill
       break;
+
     case 2:
       nBreaker = index; //temp kill
       break;
