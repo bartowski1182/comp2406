@@ -22,6 +22,12 @@ string Application::getApplicationNumber(){
   return convert.str();
 }
 
+string Application::getStudentTypeString(){
+  stringstream convert;
+  convert << studentType;
+  return convert.str();
+}
+
 int Application::getApplicationNumberInt(){
   return applicationNum;
 }
@@ -56,26 +62,20 @@ string Application::getStudentNum(){
   return student->getNum();
 }
 
-string Application::getStudentEmail(){
-  return student->getEmail
-
-string Application::getStudentMajor()
-string Application::getStudentYear()
-string Application::getStudentCGPA()
-string Application::getStudentMGPA()
-
-string Application::getCourseRelated(){
-  
-  return CRHead->stringOut();
-    
+CourseRelatedQueue* Application::getCourseRelated(){
+  return CRHead;
 }
 
-string Application::getTaCourse(){
-  return TCHead->stringOut();
+TaCourseQueue* Application::getTaCourse(){
+  return TCHead;
 }
 
-string Application::getWorkExp(){
-  return WEHead->stringOut();
+WorkExpQueue* Application::getWorkExp(){
+  return WEHead;
+}
+
+Student* Application::getStudent(){
+  return student;
 }
 
 int Application::AppNum()

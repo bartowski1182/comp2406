@@ -1,4 +1,6 @@
 #include "UndergradStudent.h"
+using namespace std;
+
 
 UndergradStudent::UndergradStudent(string fn, string ln, string nu, string em, string m, string y, string cg, string mg) : Student(fn, ln, nu, em), sMajor(m), yearStanding(y), cgpa(cg), mgpa(mg)
 {

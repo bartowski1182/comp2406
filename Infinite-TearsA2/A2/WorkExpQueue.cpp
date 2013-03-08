@@ -35,6 +35,10 @@ void WorkExpQueue::pushBack(WorkExp *newWE)
 
 }
 
+WorkExpQueue::Node* WorkExpQueue::getHead(){
+  return head;
+}
+
 std::string WorkExpQueue::stringOut(){
   if(head == 0)
     return "";

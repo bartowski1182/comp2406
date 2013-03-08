@@ -165,6 +165,10 @@ void Mainmenu::initCutaes()
     if(nBreaker != 0)
       break;
   }
+
+  //saving = new ApplicationIO();
+
+  saving.saveApplications(applications);
   
   noecho();
 }

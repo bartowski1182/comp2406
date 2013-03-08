@@ -6,11 +6,9 @@
 
 class CourseRelatedQueue
 {
-  friend class ApplicationIO;
   class Node
   {
     friend class CourseRelatedQueue;
-    friend class ApplicationIO;
     private:
       CourseRelated* data;
       Node*    next;

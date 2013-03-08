@@ -22,7 +22,7 @@ class Mainmenu
 
   private:
     ApplicationQueue *applications;
-    ApplicationIO *saving;
+    ApplicationIO saving;
 
     void drawMainMenu(int);
     int handleInput(char);

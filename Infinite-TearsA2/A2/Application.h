@@ -18,19 +18,16 @@ class Application{
 		string getCourse();
 		string getStatus();
 		string getStudentFirstName();
-		string getCourseRelated();
 		int getApplicationNumberInt();
-		string getTaCourse();
-		string getWorkExp();
 		string getStudentLastName();
 		string getStudentNum();
 		string getStudentEmail();
-		string getStudentMajor();
-		string getStudentYear();
-		string getStudentCGPA();
-		string getStudentMGPA();
 		int getStudentType();
-		student getStudent();
+		Student* getStudent();
+		string getStudentTypeString();
+		CourseRelatedQueue *getCourseRelated();
+		TaCourseQueue *getTaCourse();
+		WorkExpQueue *getWorkExp();
 		
 	private:
 		int applicationNum;

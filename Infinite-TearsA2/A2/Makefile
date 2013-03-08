@@ -1,4 +1,4 @@
-OBJECTS = main.o Mainmenu.o Form.o Cutaes.o CutaesStudentMenu.o CutaesAdminMenu.o USGenInfo.o RCourses.o TCourses.o RWExp.o CourseRelated.o CourseRelatedQueue.o Course.o Application.o ApplicationQueue.o ApplicationIO.o WorkExp.o WorkExpQueue.o TaCourse.o TaCourseQueue.o Student.o UndergradStudent.o CourseLoader.o
+OBJECTS = main.o Mainmenu.o Form.o Cutaes.o CutaesStudentMenu.o CutaesAdminMenu.o USGenInfo.o RCourses.o TCourses.o RWExp.o CourseRelated.o CourseRelatedQueue.o Course.o Application.o ApplicationQueue.o ApplicationIO.o WorkExp.o WorkExpQueue.o TaCourse.o TaCourseQueue.o Student.o UndergradStudent.o CourseLoader.o GradStudent.o
 
 cutaes:			$(OBJECTS)
 			g++ -o cutaes $(OBJECTS) -lncurses
@@ -33,7 +33,7 @@ TCourses.o:		TCourses.cpp TCourses.h
 RWExp.o:		RWExp.cpp RWExp.h
 			g++ -c RWExp.cpp
 
-ApplicationIO.o:	ApplicationIO.cpp ApplicationIO.h ApplicationQueue.h Application.h
+ApplicationIO.o:	ApplicationIO.cpp ApplicationIO.h ApplicationQueue.h Application.h UndergradStudent.h GradStudent.h
 			g++ -c ApplicationIO.cpp
 
 Application.o:		Application.cpp Application.h Student.h ApplicationQueue.h CourseRelatedQueue.h Course.h

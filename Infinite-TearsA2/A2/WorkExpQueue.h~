@@ -6,10 +6,8 @@
 
 class WorkExpQueue
 {
-  friend class ApplicationIO;
   class Node
   {
-    friend class ApplicationIO;
     friend class WorkExpQueue;
     private:
       WorkExp* data;

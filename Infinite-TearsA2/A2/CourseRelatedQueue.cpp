@@ -71,6 +71,10 @@ bool CourseRelatedQueue::popFront()
 
 }
 
+CourseRelatedQueue::Node* CourseRelatedQueue::getHead(){
+  return head;
+}
+
 //Returns a pointer to the first Node
 CourseRelated* CourseRelatedQueue::front()
 {

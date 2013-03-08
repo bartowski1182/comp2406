@@ -91,7 +91,7 @@ int Form::allValid()
 {
   //Add the valid application to the Queue
   
-  newApp = new Application(course, "pending", newStu, cRQueue, tACQueue, wEQueue);
+  newApp = new Application(course, "pending", newStu, 0, cRQueue, tACQueue, wEQueue);
 
   if((*applications) == 0)
     (*applications) = new ApplicationQueue;

@@ -1,23 +1,23 @@
-#include "TaCourseQueue.h"
+#include "WorkExpQueue.h"
 
 using namespace std;
 
-TaCourseQueue::TaCourseQueue() : head(0) { }
+WorkExpQueue::WorkExpQueue() : head(0) { }
 
 
 //Deallocate All Memory
-TaCourseQueue::~TaCourseQueue()
+WorkExpQueue::~WorkExpQueue()
 {
 
 
 }
 
 //Adds an item to back of Queue, make sure to check for all cases (empty list)
-void TaCourseQueue::pushBack(TaCourse *newTC)
+void WorkExpQueue::pushBack(WorkExp *newWE)
 {
 
   Node* tempNode = new Node;
-  tempNode->data = newTC;
+  tempNode->data = newWE;
   tempNode -> next = 0;
 
   if(head == 0){
@@ -35,11 +35,7 @@ void TaCourseQueue::pushBack(TaCourse *newTC)
 
 }
 
-TaCourseQueue::Node* TaCourseQueue::getHead(){
-  return head;
-}
-
-std::string TaCourseQueue::stringOut(){
+std::string WorkExpQueue::stringOut(){
   if(head == 0)
     return "";
 
@@ -59,7 +55,7 @@ std::string TaCourseQueue::stringOut(){
 }
 
 //Removes first item from Queue, make sure to deallocate all memory
-bool TaCourseQueue::popFront()
+bool WorkExpQueue::popFront()
 {
   if(head != 0)
   {
@@ -75,13 +71,13 @@ bool TaCourseQueue::popFront()
 }
 
 //Returns a pointer to the first Node
-TaCourse* TaCourseQueue::front()
+WorkExp* WorkExpQueue::front()
 {
   return head -> data;
 }
 
 //Checks to see if the Linked List is empty... ie Check to see if head is NULL
-bool TaCourseQueue::empty()
+bool WorkExpQueue::empty()
 {
   return head == 0;
 }

@@ -27,7 +27,7 @@ int Form::update()
     case 1:
       //draw the gen info page
        
-      page1 = new GenInfo(&course, &newStu);
+      page1 = new USGenInfo(&course, &newStu);
       cont = page1 -> initGenInfo();
       delete page1;
 
@@ -91,7 +91,7 @@ int Form::allValid()
 {
   //Add the valid application to the Queue
   
-  newApp = new Application(course, "pending", newStu, cRQueue, tACQueue, wEQueue);
+  newApp = new Application(course, "pending", newStu, 0 cRQueue, tACQueue, wEQueue);
 
   if((*applications) == 0)
     (*applications) = new ApplicationQueue;
