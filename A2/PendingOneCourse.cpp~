@@ -2,7 +2,8 @@
 
 using namespace std;
 
-PendingOneCourse::PendingOneCourse() : index(1), nBreaker(0), courseIndex(1)
+PendingOneCourse::PendingOneCourse(ApplicationQueue **aq) : index(1), nBreaker(0), courseIndex(1), startViewApp(1),
+                                                            endViewApp(15), currViewApp(1), applications(aq), arraySize(0)
 {
 
   //WELCOME TO ADMIN MENU
@@ -29,7 +30,7 @@ void PendingOneCourse::drawPendOCourse(int selection)
   clear();
 
   int lx, ly, i;
-  char c[46];
+  char c[100];
 
   
   for(int j = 0; j < 45; j++)
@@ -77,6 +78,21 @@ void PendingOneCourse::drawPendOCourse(int selection)
     }
 
     ++ly;
+  }
+
+  ///////////////////////////////////////////////////////////////
+  //For actual pending applications summaries
+  mvprintw(currViewApp + 4, 6, "THIS IS A SENTENCE");
+  mvprintw(LINES - 1, 0, "currViewApp is %d", currViewApp);
+  if (applications != 0) {
+    for(int i = 0; i < arraySize; i++)
+    {
+      if (appArray[i] -> getCourse() == course)
+      {
+
+      //mvprintw(currViewApp + 5, 6, );
+      }
+    }
   }
 
   move(LINES - 2, 0);
@@ -197,12 +213,16 @@ int PendingOneCourse::handleSelection(int selection)
 
   switch(selection)
   {
-    case 1: //
-      nBreaker = selection;
+    case 1: //up arrow
+      if (currViewApp != startViewApp) {
+        currViewApp --;
+      }
       break;
 
-    case 2:
-      nBreaker = selection;
+    case 2: //down arrow
+      if (currViewApp != endViewApp) {
+        currViewApp ++;
+      }
       break;
  
     case 3:
@@ -306,6 +326,15 @@ void PendingOneCourse::initPendOCourse()
   load -> loadCourses(&courseList);
   delete load;
 
+  mvprintw(LINES - 2, 0, "Before I'm doing the array thing %d\n", index);
+  getch();
+  
+  if (*applications != 0)
+    arraySize = (*applications) -> setQueueIntoArray(&appArray);
+
+  mvprintw(LINES - 3, 0, "After the array thing %d\n", arraySize);
+  getch();
+
   char c;
 
   initCourseView();
@@ -327,7 +356,5 @@ void PendingOneCourse::initPendOCourse()
       break;
   }
   
-    mvprintw(LINES - 2, 0, "Index is currently %d\n", index);
-    getch();
   noecho();
 }

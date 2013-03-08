@@ -154,7 +154,7 @@ int CutaesStudentMenu::handleSelection(int selection)
 ////////////////////////////////////////////////////////////
 //<summary> Creates the form                    </summary>//
 ////////////////////////////////////////////////////////////  
-void CutaesStudentMenu::initStudentMenu()
+int CutaesStudentMenu::initStudentMenu()
 {
   clear();
 

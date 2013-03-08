@@ -1,7 +1,7 @@
 #include "Mainmenu.h"
 using namespace std;
 
-Mainmenu::Mainmenu(ApplicationQueue **aq) : index(1), nBreaker(0), sMenu(0), aMenu(0)
+Mainmenu::Mainmenu() : index(1), nBreaker(0), sMenu(0), aMenu(0)
 {
   labels[0] = "Student";
   labels[1] = "Admin";
@@ -165,6 +165,10 @@ void Mainmenu::initCutaes()
     if(nBreaker != 0)
       break;
   }
+
+
+
+  saving.saveApplications(applications);
   
   noecho();
 }

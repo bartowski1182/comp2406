@@ -1,7 +1,7 @@
 #include"CutaesAdminMenu.h"
 using namespace std;
 
-CutaesAdminMenu::CutaesAdminMenu(ApplicationQueue **aq) : index(1), nBreaker(0)
+CutaesAdminMenu::CutaesAdminMenu(ApplicationQueue **aq) : index(1), nBreaker(0), applications(aq)
 {
   applications = aq;
 
@@ -35,9 +35,9 @@ void CutaesAdminMenu::drawAdminMenu(int selection)
 {
   clear();
   
-  mvprintw(5, 20, "----------------------------------------");
-  mvprintw(6, 20, "--------       Admin Menu      ---------");
-  mvprintw(7, 20, "----------------------------------------");
+  mvprintw(5, COLS/3, "----------------------------------------");
+  mvprintw(6, COLS/3, "--------       Admin Menu      ---------");
+  mvprintw(7, COLS/3, "----------------------------------------");
 
   int lx, ly, i;
   char c[46];
@@ -147,7 +147,7 @@ int CutaesAdminMenu::handleSelection(int selection)
       break;
 
     case 3: //Summary of pending applications
-      pending = new PendingApps();
+      pending = new PendingApps(applications);
       pending -> initPendApps();
       delete pending;
 
