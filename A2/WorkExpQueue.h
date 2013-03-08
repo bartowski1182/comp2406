@@ -6,8 +6,10 @@
 
 class WorkExpQueue
 {
+  friend class ApplicationIO;
   class Node
   {
+    friend class ApplicationIO;
     friend class WorkExpQueue;
     private:
       WorkExp* data;
@@ -24,6 +26,7 @@ class WorkExpQueue
     WorkExp* front();
     bool empty();
     std::string stringOut();
+    Node *getHead();
     
   private:
     Node *head;

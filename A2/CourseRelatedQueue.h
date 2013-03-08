@@ -6,9 +6,11 @@
 
 class CourseRelatedQueue
 {
+  friend class ApplicationIO;
   class Node
   {
     friend class CourseRelatedQueue;
+    friend class ApplicationIO;
     private:
       CourseRelated* data;
       Node*    next;
@@ -24,6 +26,7 @@ class CourseRelatedQueue
     CourseRelated* front();
     bool empty();
     std::string stringOut();
+    Node *getHead();
     
   private:
     Node *head;

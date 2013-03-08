@@ -35,6 +35,10 @@ void TaCourseQueue::pushBack(TaCourse *newTC)
 
 }
 
+TaCourseQueue::Node* TaCourseQueue::getHead(){
+  return head;
+}
+
 std::string TaCourseQueue::stringOut(){
   if(head == 0)
     return "";

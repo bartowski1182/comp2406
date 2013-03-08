@@ -10,23 +10,30 @@ using namespace std;
 class Application{
 
 	public:
-		Application (string = "", string = "", Student* = 0, CourseRelatedQueue* = 0, TaCourseQueue* = 0, WorkExpQueue* = 0);
+		Application (string = "", string = "", Student* = 0, int = 0, CourseRelatedQueue* = 0, TaCourseQueue* = 0, WorkExpQueue* = 0);
 		~Application();
 
 		int AppNum ();
 		string getApplicationNumber();
 		string getCourse();
 		string getStatus();
-		string getStudentName();
-		string getCourseRelated();
+		string getStudentFirstName();
 		int getApplicationNumberInt();
-		string getTaCourse();
-		string getWorkExp();
+		string getStudentLastName();
+		string getStudentNum();
+		string getStudentEmail();
+		int getStudentType();
+		Student* getStudent();
+		string getStudentTypeString();
+		CourseRelatedQueue *getCourseRelated();
+		TaCourseQueue *getTaCourse();
+		WorkExpQueue *getWorkExp();
 		
 	private:
 		int applicationNum;
 		string course;
 		string status;
+		int studentType;
 
 		Student* student;
 		CourseRelatedQueue* CRHead;

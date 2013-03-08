@@ -6,9 +6,11 @@
 
 class TaCourseQueue
 {
+  friend class ApplicationIO;
   class Node
   {
     friend class TaCourseQueue;
+    friend class ApplicationIO;
     private:
       TaCourse* data;
       Node*    next;
@@ -24,6 +26,7 @@ class TaCourseQueue
     TaCourse* front();
     bool empty();
     std::string stringOut();
+    Node *getHead();
     
   private:
     Node *head;

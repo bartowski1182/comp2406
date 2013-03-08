@@ -142,8 +142,8 @@ int Form::update()
 int Form::allValid()
 {
   //Add the valid application to the Queue
-  
-  newApp = new Application(course, "pending", newStu, cRQueue, tACQueue, wEQueue);
+  //GOING TO NEED AN INT WHICH WILL TELL WHAT TYPE OF STUDENT
+  newApp = new Application(course, "pending", newStu, 0, cRQueue, tACQueue, wEQueue);
 
   if((*applications) == 0)
     (*applications) = new ApplicationQueue;

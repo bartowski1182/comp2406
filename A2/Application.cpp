@@ -6,7 +6,7 @@
 #include <sstream>
 using namespace std;
 
-Application::Application(string newCourse, string stat, Student* newStudent, CourseRelatedQueue* CR,  TaCourseQueue* TC, WorkExpQueue* WE) : applicationNum(AppNum()), course(newCourse), status	(stat), student(newStudent), CRHead(CR), TCHead(TC), WEHead(WE)
+Application::Application(string newCourse, string stat, Student* newStudent, int type, CourseRelatedQueue* CR,  TaCourseQueue* TC, WorkExpQueue* WE) : applicationNum(AppNum()), course(newCourse), status	(stat), student(newStudent), studentType(type), CRHead(CR), TCHead(TC), WEHead(WE)
 {
 	
 }
@@ -22,8 +22,22 @@ string Application::getApplicationNumber(){
   return convert.str();
 }
 
+string Application::getStudentTypeString(){
+  stringstream convert;
+  convert << studentType;
+  return convert.str();
+}
+
 int Application::getApplicationNumberInt(){
   return applicationNum;
+}
+
+string Application::getStudentEmail(){
+  return student->getEmail();
+}
+
+int Application::getStudentType(){
+  return studentType;
 }
 
 string Application::getCourse(){
@@ -34,23 +48,34 @@ string Application::getStatus(){
   return status;
 }
 
-string Application::getStudentName(){
+string Application::getStudentFirstName(){
   if(student != 0)
   return student -> getFirstName();
 }
 
-string Application::getCourseRelated(){
-  
-  return CRHead->stringOut();
-    
+string Application::getStudentLastName(){
+  if(student != 0)
+  return student -> getLastName();
 }
 
-string Application::getTaCourse(){
-  return TCHead->stringOut();
+string Application::getStudentNum(){
+  return student->getNum();
 }
 
-string Application::getWorkExp(){
-  return WEHead->stringOut();
+CourseRelatedQueue* Application::getCourseRelated(){
+  return CRHead;
+}
+
+TaCourseQueue* Application::getTaCourse(){
+  return TCHead;
+}
+
+WorkExpQueue* Application::getWorkExp(){
+  return WEHead;
+}
+
+Student* Application::getStudent(){
+  return student;
 }
 
 int Application::AppNum()

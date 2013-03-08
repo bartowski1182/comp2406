@@ -37,10 +37,10 @@ bool Student::canSetFirstName(string fn){
     return false;
   }
 
-  /*string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm-";
+  string letters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm-";
   if(fn.find_first_not_of(letters) != string::npos){
     return false;
-  }*/
+  }
   
   return true;
 

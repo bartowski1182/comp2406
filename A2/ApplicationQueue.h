@@ -6,9 +6,11 @@
 
 class ApplicationQueue
 {
+  friend class ApplicationIO;
   class Node
   {
     friend class ApplicationQueue;
+    friend class ApplicationIO;
     private:
       Application* data;
       Node*    next;

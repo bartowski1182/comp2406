@@ -2,6 +2,9 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include "UndergradStudent.h"
+#include "GradStudent.h"
+#include "sys/stat.h"
 
 using namespace std;
 
@@ -21,27 +24,93 @@ void ApplicationIO::saveApplications(ApplicationQueue* appQ) const
   if(appQ== 0)
     return;
 
-  ofstream applications("applications.txt", ios::app);
-  if(!applications){
-    cout << "applications.txt could not be opened" << endl;
-    exit(1);
-  }
+  ApplicationQueue::Node* current = appQ->getHead();
 
-  applications.precision(2);
-  applications<<fixed;
+  system("exec rm -r ./Applications/*");
 
-  int headAppNum = appQ->front()->getApplicationNumberInt();
+  ofstream appList("./Applications/ApplicationList.txt", ios::app);
 
-  bool running;
+  while(current != 0){
 
-  while(headAppNum != appQ->front()->getApplicationNumberInt()){
-    applications<<appQ->front()->getApplicationNumber() << "%" << appQ->front()->getCourse() << "%" << appQ->front()->getStatus() << "%" << appQ->front()->getStudentName() << "%" << appQ->front()->getCourseRelated() << "%" << appQ->front()->getTaCourse() << "%" << appQ->front()->getWorkExp() << endl;
-    appQ->pushBack(appQ->front());
-    running = appQ->popFront();
+    string folderPath = "Applications/" + current->data->getCourse();
+
+    mkdir("Applications", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+
+    mkdir(folderPath.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+
+    string address = "./Applications/" + current->data->getCourse() + "/" + current->data->getApplicationNumber() + ".txt";
+    
+    ofstream application(address.c_str(), ios::app);
+    if(!application)
+      cout << "Could not open file\n";
+
+    appList << current->data->getApplicationNumber() + "#" + current->data->getStatus() + "#" + current->data->getStudentTypeString() << endl;
+
+    string courseAppListAddress = "./Applications/" + current->data->getCourse() + "/" + "ApplicationList.txt";
+
+    ofstream courseAppList(courseAppListAddress.c_str(), ios::app);
+
+    application << "General info" << endl;
+    application << current->data->getApplicationNumber() << endl;
+    application << current->data->getCourse() << endl;
+    application << current->data->getStatus() << endl;
+    application << current->data->getStudentNum() << endl;
+    application << current->data->getStudentFirstName() << endl;
+    application << current->data->getStudentLastName() << endl;
+    application << current->data->getStudentEmail() << endl;
+
+    application << current->data->getStudentTypeString() << endl;
+ 
+    if(current->data->getStudentType() == 0){
+      courseAppList << 
+      application << ((UndergradStudent*)(current->data->getStudent()))->getMajor() << endl;
+      application << ((UndergradStudent*)(current->data->getStudent()))->getYear() << endl;
+      application << ((UndergradStudent*)(current->data->getStudent()))->getCGPA() << endl;
+      application << ((UndergradStudent*)(current->data->getStudent()))->getMGPA() << endl;
+    }
+    else{
+      application << ((GradStudent*)(current->data->getStudent()))->getResearch() << endl;
+      application << ((GradStudent*)(current->data->getStudent()))->getProgram() << endl;
+      application << ((GradStudent*)(current->data->getStudent()))->getSuper() << endl;
+    }
+
+    CourseRelatedQueue::Node* currentRelated = current->data->getCourseRelated()->getHead();
+
+    application << "Course Related" << endl;
+
+    while(currentRelated != 0){
+      application << currentRelated->data->print() << endl;
+      currentRelated = currentRelated->next;
+    }
+
+    TaCourseQueue::Node* currentTA = current->data->getTaCourse()->getHead();
+
+    application << "TA Course" << endl;
+
+    while(currentRelated != 0){
+      application << currentTA->data->print() << endl;
+      currentTA = currentTA->next;
+    }
+
+    WorkExpQueue::Node* currentWE = current->data->getWorkExp()->getHead();
+
+    application << "WE Course" << endl;
+
+    while(currentWE != 0){
+      application << currentWE->data->print() << endl;
+      currentWE = currentWE->next;
+    }
+
+    current = current->next;
+
+    
+
   }
 
 }
 /*
+string[] 
+
 void ApplicationIO::loadApplications(ApplicationQueue* appQ) const
 {
   ifstream applications("applications.txt", ios::in);
@@ -76,9 +145,7 @@ void ApplicationIO::loadApplications(ApplicationQueue* appQ) const
 	while(tempString.at(i) != '\0'){
 	  tempString.first_first_of("#"
 	}
-	
-	
   }
-
 }*/
+
 

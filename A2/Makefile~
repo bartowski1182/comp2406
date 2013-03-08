@@ -81,7 +81,7 @@ PendingChoose.o:	PendingChoose.cpp PendingChoose.h
 PendingApps.o:		PendingApps.cpp PendingApps.h PendingChoose.h
 			g++ -c PendingApps.cpp
 
-PendingOneCourse.o:	PendingOneCourse.cpp PendingOneCourse.h
+PendingOneCourse.o:	PendingOneCourse.cpp PendingOneCourse.h CourseLoader.h
 			g++ -c PendingOneCourse.cpp
 
 CourseLoader.o:		CourseLoader.cpp CourseLoader.h

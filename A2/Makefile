@@ -90,5 +90,5 @@ CourseLoader.o:		CourseLoader.cpp CourseLoader.h
 package: 
 			tar -cvf assignment2.tar *.c *.h Makefile
 
-clean: 		
+clean: 
 			rm -f *.o cutaes
