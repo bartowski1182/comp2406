@@ -1,0 +1,415 @@
+#include "RWExp.h"
+using namespace std;
+
+RWExp::RWExp(std::string s, WorkExpQueue **aq) : index(1), course(s), nBreaker(0), wEHead(aq),
+						 cancel(false), reset(false), newWE(0)
+{
+  labels[0] = "Responsibilities:";
+  labels[1] = "Duration:";
+  labels[2] = "Start Date";
+  labels[3] = "End Date";
+  labels[4] = "Cancel";
+  labels[5] = "Accept";
+  labels[6] = "Add";
+
+  for(int i = 0; i < RWNUM_CHOI - 3; i++)
+    textFields[i] = "";
+
+}
+
+RWExp::~RWExp()
+{
+
+
+}
+
+////////////////////////////////////////////////////////////////////////////
+//<summary> Creates the GUI... draws the labels and textfields  </summary>//
+////////////////////////////////////////////////////////////////////////////
+void RWExp::drawRWExp(int selection)
+{
+  int x, lx, y, ly, i;
+  char c[RWMAX_BUF + 1];
+
+  for(int j = 0; j < RWMAX_BUF; j++)
+  {
+    if(j < labels[selection - 1].length()) {
+      c[j] = labels[selection - 1][j];
+    }
+    else
+      c[j] = 0;
+  }
+  c[RWMAX_BUF] = 0;
+
+  x = 28;
+  y = 6;
+  ly = 6;
+
+  for(i = 0; i < RWNUM_CHOI; i++) //Draw the labels for the text fields
+  {
+    for(int j = 0; j < RWMAX_BUF; j++)
+    {
+
+      if(j < labels[i].length())
+        c[j] = labels[i][j];
+      else
+        c[j] = 0;
+    }
+    c[RWMAX_BUF] = 0;
+    
+    if(i > 3)
+    {
+      ly = LINES - 10;
+      if(i == 4) { lx = COLS / 4; }
+      else if (i == 5) { lx = COLS / 2; }
+      else if (i == 6) { lx = 3 * COLS / 4; }
+    }
+    else
+    {
+      lx = 4;
+    }
+
+    if(selection > 4 && selection == i + 1)
+    {
+      if(selection == 5) { lx = COLS / 4; }
+      else if(selection == 6) { lx = COLS / 2; }
+      else if(selection == 7) { lx = 3 * COLS / 4; }
+      attron(A_REVERSE);
+      mvprintw(ly, lx, "%s", c);
+      refresh();
+      attroff(A_REVERSE);
+    }
+    else
+    {
+      mvprintw(ly, lx, "%s", c);
+      refresh();
+    }
+
+    ++ly;
+  }
+
+  for(i = 0; i < RWNUM_CHOI - 3; i++) //Draw the textFields
+  {
+
+    for(int j = 0; j < RWMAX_BUF; j++)
+    {
+      if(j < textFields[i].length())
+        c[j] = textFields[i][j];
+      else
+        c[j] = 0;
+    }
+    c[RWMAX_BUF] = 0;
+
+    if(selection == i+1)
+    {
+
+      mvprintw(LINES - 4, 0, "Dis bitch is %d\n", selection);
+      mvprintw(LINES - 5, 0, "Length of textfield is %d\n", textFields[i].length());
+      attron(A_REVERSE);
+
+      if(textFields[i].length() == 0)
+        mvprintw(y, x, "          ");
+      else
+        mvprintw(y, x, "%s\n", c);
+
+      refresh();
+      attroff(A_REVERSE);
+    }
+    else
+    {
+      mvprintw(y, x, "%s\n", c);
+      refresh();
+    }
+
+    c[0] = 0;
+    
+    ++y;
+  }
+
+  move(LINES - 2, 0);
+}
+
+
+////////////////////////////////////////////////////////////////////
+//<summary> Deal with any character the user might input</summary>//
+////////////////////////////////////////////////////////////////////
+int RWExp::handleInput(char c)
+{
+
+
+  mvprintw(LINES - 3, 0, "Index is %d", index);
+
+  switch(c)
+    {
+      case (char)KEY_UP: //FOR UP KEY
+        if (index == 1)
+          index = 1;
+        else
+          --index;
+        break;
+
+      case (char)KEY_LEFT: //FOR LEFT KEY
+        if (index == 1)
+          index = 1;
+        else
+          --index;
+        break;
+
+      case (char)KEY_RIGHT: //FOR RIGHT KEY
+        if (index == RWNUM_CHOI)
+          index = RWNUM_CHOI;
+        else
+          ++index;
+        break;
+
+      case (char)KEY_DOWN: //FOR DOWN KEY
+        if(index == RWNUM_CHOI)
+          index = RWNUM_CHOI;
+        else
+          ++index;
+        break;
+
+      case (char)KEY_F(2): //FOR F2 KEY, USER WOULD LIKE TO EXIT
+        nBreaker = index;
+        break;
+
+      case (char)KEY_F(3): //FOR F2 KEY, USER WOULD LIKE TO EXIT
+        textFields[0] = "first";
+        textFields[1] = "first";
+        textFields[2] = "first";
+        textFields[3] = "first";
+        handleAccept();
+        break;
+
+      case (char)'\r':  //If ENTER KEY IS HIT
+        printw("%d is the index when Enter was pressed\n", index);
+        handleSelection(c);
+        break;
+
+      default:
+        printw("%c was entered\n", c);
+        break;
+    }
+
+  return c;
+
+}
+
+///////////////////////////////////////////////////////////
+//<summary> Figures out what to do based on index's      //
+//          value  </summary>                            //
+///////////////////////////////////////////////////////////
+int RWExp::handleSelection(char c)
+{
+  if(index < 5)
+  {
+    char cInput[RWMAX_BUF];
+    
+    mvprintw(LINES - 1, 0, "\n"); //Line clear
+    move(LINES - 1, 0);
+    echo();
+    getnstr(cInput, RWMAX_BUF);
+    noecho();
+
+    string sInput;
+    sInput.assign(cInput);
+    textFields[index - 1].assign(sInput);
+  }
+  else
+  {
+    if(index == 5) { cancel = true; return nBreaker = index; }
+    if(index == 6) { handleAccept(); }
+    if(index == 7) { handleAdd(); }
+    printw("   Index is %d\n", index);
+  }
+
+  return 1;
+}
+
+
+////////////////////////////////////////////////////////////
+//<summary> Resets the text fields and adds a node to the //
+//          Queue of Course Related </summary>            //
+////////////////////////////////////////////////////////////
+int RWExp::handleAdd()
+{
+  /*Do */
+  printw("DIS USA WANNA ADD");
+
+
+  checkValid();
+  if(newWE != 0)
+  {
+    if((*wEHead) == 0)
+      (*wEHead) = new WorkExpQueue;
+    
+    (*wEHead) -> pushBack(newWE);
+  }
+
+  for(int i = 0; i < RWNUM_CHOI - 3; i++)
+    textFields[i] = "";
+  
+  return 1;
+
+}
+
+////////////////////////////////////////////////////////////
+//<summary> Calls error checking functions to make sure   //
+//          that the textFields are valid.  </summary>    //
+////////////////////////////////////////////////////////////
+int RWExp::handleAccept()
+{
+  /*This is where we would do all the checking, have *
+   *a boolean that would go false if one of the      *
+   *input checkers returned false, set the data only *
+   *if the boolean remains true.*/
+  //But for now...
+  mvprintw(LINES - 4, 0, "DIS USA AWNNA ACCEPT");
+
+  checkValid();
+  if(newWE != 0)
+  {
+    if((*wEHead) == 0)
+      (*wEHead) = new WorkExpQueue;
+    
+    (*wEHead) -> pushBack(newWE);
+
+    nBreaker = index;
+  }
+
+  return 1;
+}
+
+//////////////////////////////////////////////////////////////////////
+//<summary> Asks if the user wants to apply again or if they want to//
+//          quit </summary>                                         //
+//////////////////////////////////////////////////////////////////////
+int RWExp::postAccept()
+{
+  
+  bool quit = false;
+  char c;
+
+
+  clear();
+  mvprintw(5, 10, "Do you want to do it again?");
+  mvprintw(6, 10, "1: Yes");
+  mvprintw(7, 10, "2: No");
+
+  while(!quit)
+  {
+
+    c = getch();
+
+    mvprintw(LINES - 3, 0, "%c was pressed", c);
+ 
+    switch(c)
+    {
+      case (char)'1':
+        //Yes they want to
+        reset = true;
+        quit = true;
+        break;
+      case (char)'2':
+        reset = false;
+        quit = true;
+        break;
+      case (char)KEY_F(2):
+        quit = true;
+        break;
+      default:
+        mvprintw(LINES - 3, 0, "%c was pressed", c);
+        break;
+    }
+  }
+  return 0;
+
+
+}
+
+
+
+//////////////////////////////////////////////////////////////////////
+//<summary> Checks to make sure every text field is valid </summary>//
+//////////////////////////////////////////////////////////////////////
+WorkExp* RWExp::checkValid()
+{
+  //Would usually check every input, no time so just checking to see if the user has
+  //filled something out
+
+  bool canSet = true;
+  bool testPassed = true;
+  
+  for(int i = 0; i < RWNUM_CHOI - 3; i++)
+  {
+    if(textFields[i].length() == 0) {
+      testPassed = false;
+      newWE = 0;
+      mvprintw(LINES - 3, 0, "Some Fields are left blank");
+    }
+  }
+
+  if(testPassed)
+  {
+    newWE = new WorkExp(textFields[0], textFields[1], textFields[2], textFields[3]);
+    mvprintw(LINES - 2, 0, "Course Related has successfully been created!");
+    return newWE;
+  }
+  else
+  {
+    mvprintw(LINES - 1, 0, "Course Related was not able to be created");
+  }
+
+  return 0;
+}
+
+////////////////////////////////////////////////////////////
+//<summary> Creates the form                    </summary>//
+////////////////////////////////////////////////////////////  
+int RWExp::initRWExp()
+{
+  clear();
+  scrollok(NULL, TRUE);
+
+
+  char ccourse[RWMAX_BUF + 1];
+  for(int i = 0; i < RWMAX_BUF; i++)
+  {
+    if(i < course.length())
+      ccourse[i] = course[i];
+    else
+      ccourse[i] = 0;
+  }
+  ccourse[RWMAX_BUF] = 0;
+
+  mvprintw(0, 0, "Why hello there, you are registering for: %s\n", ccourse);
+  refresh();
+
+
+  char c;
+
+  drawRWExp(index);
+
+  while(1)
+  {
+    c = getch();
+    
+    handleInput(c); //Will deal with any input the user provides
+    
+    drawRWExp(index); //Redraw the UI based on any changes made by the user
+
+    if(nBreaker != 0)
+      break;
+  }
+  
+  noecho();
+  scrollok(NULL, FALSE);
+
+  postAccept();
+
+  //RETURN NEG IF HIT CANCEL, 0 IF ACCEPT AND VALID BUT NO RESET, POS IF VALID AND WANT RESET
+  if (newWE == 0 || cancel)  return -1;
+  else if(reset) return 1;
+  else return 0;
+  //else return false
+}

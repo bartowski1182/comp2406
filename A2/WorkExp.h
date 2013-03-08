@@ -1,0 +1,39 @@
+#ifndef WORKEXP_H
+#define WORKEXP_H
+using namespace std;
+#include <string>
+class WorkExp
+{
+
+  public:
+    WorkExp(string = "", string = "0", string = "", string = "");
+    ~WorkExp();
+    
+    string getResponsibilities();
+    string getStartDate();
+    string getEndDate();
+    string getMonths();
+    bool canSetResponsibilities(string);
+    bool canSetMonths(string);
+    string print();
+
+  private:
+    string responsibilities;
+    string startDate;
+    string endDate;
+    string months;
+
+};
+
+#endif
+
+
+
+
+
+
+
+
+
+
+

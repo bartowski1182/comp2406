@@ -1,0 +1,151 @@
+#include "ApplicationIO.h"
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include "UndergradStudent.h"
+#include "GradStudent.h"
+#include "sys/stat.h"
+
+using namespace std;
+
+ApplicationIO::ApplicationIO()
+{
+  
+}
+
+ApplicationIO::~ApplicationIO()
+{
+  
+}
+
+void ApplicationIO::saveApplications(ApplicationQueue* appQ) const
+{
+
+  if(appQ== 0)
+    return;
+
+  ApplicationQueue::Node* current = appQ->getHead();
+
+  system("exec rm -r ./Applications/*");
+
+  ofstream appList("./Applications/ApplicationList.txt", ios::app);
+
+  while(current != 0){
+
+    string folderPath = "Applications/" + current->data->getCourse();
+
+    mkdir("Applications", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+
+    mkdir(folderPath.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+
+    string address = "./Applications/" + current->data->getCourse() + "/" + current->data->getApplicationNumber() + ".txt";
+    
+    ofstream application(address.c_str(), ios::app);
+    if(!application)
+      cout << "Could not open file\n";
+
+    appList << current->data->getApplicationNumber() + "#" + current->data->getStatus() + "#" + current->data->getStudentTypeString() << endl;
+
+    string courseAppListAddress = "./Applications/" + current->data->getCourse() + "/" + "ApplicationList.txt";
+
+    ofstream courseAppList(courseAppListAddress.c_str(), ios::app);
+
+    application << "General info" << endl;
+    application << current->data->getApplicationNumber() << endl;
+    application << current->data->getCourse() << endl;
+    application << current->data->getStatus() << endl;
+    application << current->data->getStudentNum() << endl;
+    application << current->data->getStudentFirstName() << endl;
+    application << current->data->getStudentLastName() << endl;
+    application << current->data->getStudentEmail() << endl;
+
+    application << current->data->getStudentTypeString() << endl;
+ 
+    if(current->data->getStudentType() == 0){
+      courseAppList << 
+      application << ((UndergradStudent*)(current->data->getStudent()))->getMajor() << endl;
+      application << ((UndergradStudent*)(current->data->getStudent()))->getYear() << endl;
+      application << ((UndergradStudent*)(current->data->getStudent()))->getCGPA() << endl;
+      application << ((UndergradStudent*)(current->data->getStudent()))->getMGPA() << endl;
+    }
+    else{
+      application << ((GradStudent*)(current->data->getStudent()))->getResearch() << endl;
+      application << ((GradStudent*)(current->data->getStudent()))->getProgram() << endl;
+      application << ((GradStudent*)(current->data->getStudent()))->getSuper() << endl;
+    }
+
+    CourseRelatedQueue::Node* currentRelated = current->data->getCourseRelated()->getHead();
+
+    application << "Course Related" << endl;
+
+    while(currentRelated != 0){
+      application << currentRelated->data->print() << endl;
+      currentRelated = currentRelated->next;
+    }
+
+    TaCourseQueue::Node* currentTA = current->data->getTaCourse()->getHead();
+
+    application << "TA Course" << endl;
+
+    while(currentRelated != 0){
+      application << currentTA->data->print() << endl;
+      currentTA = currentTA->next;
+    }
+
+    WorkExpQueue::Node* currentWE = current->data->getWorkExp()->getHead();
+
+    application << "WE Course" << endl;
+
+    while(currentWE != 0){
+      application << currentWE->data->print() << endl;
+      currentWE = currentWE->next;
+    }
+
+    current = current->next;
+
+    
+
+  }
+
+}
+/*
+string[] 
+
+void ApplicationIO::loadApplications(ApplicationQueue* appQ) const
+{
+  ifstream applications("applications.txt", ios::in);
+  
+  if(!applications){
+    cout<<"Could not open file applications.txt" << endl;
+    exit(1);
+  }
+
+  char input[500];
+  int appNum;
+  string course;
+  int status;
+  string student;
+  CourseRelatedQueue* CRHead;
+  TaCourseQueue* TCHead;
+  WorkExpQueue* WEHead;
+  string tempString;
+  
+  while(!applications.eof()){
+	applications.getline(input, 500, '%');
+	appNum = atoi(input);
+        applications.getline(input, 500, '%');
+	course = input;
+	applications.getline(input, 500, '%');
+	status = atoi(input);
+	applications.getline(input, 500, '%');
+	student = input;
+	applications.getline(input, 500, '%');
+	tempString = input;
+	int i = 0;
+	while(tempString.at(i) != '\0'){
+	  tempString.first_first_of("#"
+	}
+  }
+}*/
+
+
