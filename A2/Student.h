@@ -1,0 +1,58 @@
+#ifndef STUDENT_H
+#define STUDENT_H
+
+using namespace std;
+#include <string>
+#include <stdlib.h>
+#include <iostream>
+
+class Student
+{
+  public:
+    Student(string="unknown", string = "unknown", string="000000000", string="unknown@carleton.ca");
+    ~Student();
+
+    string getFirstName();
+
+    string getLastName();
+
+    string getName();
+
+    string getNum();
+
+    string getEmail();
+
+    void setFirstName(string);
+
+    void setLastName(string);
+
+    void setNum(string);
+
+    void setEmail(string);
+
+    static bool canSetEmail(string);
+
+    static bool canSetStudentNumber(string);
+
+    static bool canSetFirstName(string);
+
+    static bool canSetLastName(string);
+
+
+  private:
+
+    string number;
+    string firstName;
+    string lastName;
+    string email;
+    string sMajor;
+    string yearStanding;
+    string cgpa;
+    string mgpa;
+
+};
+
+
+#endif
+
+
