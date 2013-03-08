@@ -90,9 +90,12 @@ int Form::update()
     case 2:
       //draw the related courses page
 
-      page2 = new RCourses(course, &cRQueue);
-      cont = page2 -> initRCourses();
-      delete page2;
+      if (which_menu == 1) {
+        page2 = new RCourses(course, &cRQueue);
+        cont = page2 -> initRCourses();
+        delete page2;
+      }
+      else cont = true;
 
       if (cont) ++index;
       else nBreaker = index;

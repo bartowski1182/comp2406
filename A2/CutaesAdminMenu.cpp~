@@ -1,7 +1,7 @@
 #include"CutaesAdminMenu.h"
 using namespace std;
 
-CutaesAdminMenu::CutaesAdminMenu(ApplicationQueue **aq) : index(1), nBreaker(0)
+CutaesAdminMenu::CutaesAdminMenu(ApplicationQueue **aq) : index(1), nBreaker(0), applications(aq)
 {
   applications = aq;
 
@@ -150,6 +150,7 @@ int CutaesAdminMenu::handleSelection(int selection)
       pending = new PendingApps();
       pending -> initPendApps();
       delete pending;
+
       break;
 
     case 4:

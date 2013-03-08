@@ -28,7 +28,7 @@ class ApplicationQueue
     void clearData();
     Node *getHead();
 
-    int setQueueIntoArray(Application ***);
+    void setQueueIntoArray(Application ***);
     
   private:
     Node *head;

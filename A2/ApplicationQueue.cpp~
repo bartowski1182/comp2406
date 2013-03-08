@@ -94,7 +94,7 @@ int ApplicationQueue::setQueueIntoArray(Application ***appArray)
   int sizeOf = 0;
 
   Node *currNode = head;
-/*
+
   while(currNode != 0) {
     sizeOf ++;
     currNode = currNode -> next;

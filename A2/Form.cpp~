@@ -72,12 +72,12 @@ int Form::update()
       
 
       if(which_menu == 1) {
-        page1_1 = new USGenInfo(&course, &newStu);
+        page1_1 = new USGenInfo(&course, &newStu, &stuType);
         cont = page1_1 -> initGenInfo();
         delete page1_1;
       }
       else if(which_menu == 2) {
-        page1_2 = new GGenInfo(&course, &newStu);
+        page1_2 = new GGenInfo(&course, &newStu, &stuType);
         cont = page1_2 -> initGenInfo();
         delete page1_2;
       }

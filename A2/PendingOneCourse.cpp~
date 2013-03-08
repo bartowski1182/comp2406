@@ -2,7 +2,8 @@
 
 using namespace std;
 
-PendingOneCourse::PendingOneCourse() : index(1), nBreaker(0), courseIndex(1)
+PendingOneCourse::PendingOneCourse(ApplicationQueue **aq) : index(1), nBreaker(0), courseIndex(1), startViewApp(1),
+                                                            endViewApp(15), currViewApp(1), applications(aq), arraySize(0)
 {
 
   //WELCOME TO ADMIN MENU
@@ -78,6 +79,11 @@ void PendingOneCourse::drawPendOCourse(int selection)
 
     ++ly;
   }
+
+  ///////////////////////////////////////////////////////////////
+  //For actual pending applications summaries
+  mvprintw(currViewApp + 4, 6, "THIS IS A SENTENCE");
+  mvprintw(LINES - 1, 0, "currViewApp is %d", currViewApp);
 
   move(LINES - 2, 0);
 }
@@ -197,14 +203,20 @@ int PendingOneCourse::handleSelection(int selection)
 
   switch(selection)
   {
-    case 1: //
-      nBreaker = selection;
+    case 1: //up arrow
+      if (currViewApp != startViewApp) {
+        currViewApp --;
+      }
       break;
 
-    case 2:
+    case 2: //down arrow
+      if (currViewApp != endViewApp) {
+        currViewApp ++;
+      }
       break;
  
     case 3:
+      nBreaker = selection;
       break;
    
     case (char)KEY_F(2):
@@ -303,6 +315,15 @@ void PendingOneCourse::initPendOCourse()
   load = new CourseLoader("courselist.txt");
   load -> loadCourses(&courseList);
   delete load;
+
+  mvprintw(LINES - 2, 0, "Before I'm doing the array thing %d\n", index);
+  getch();
+  
+  if (*applications != 0)
+    arraySize = (*applications) -> setQueueIntoArray(&appArray);
+
+  mvprintw(LINES - 3, 0, "After the array thing %d\n", index);
+  getch();
 
   char c;
 

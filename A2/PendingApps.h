@@ -3,11 +3,12 @@
 
 #include "PendingChoose.h"
 #include "PendingOneCourse.h"
+#include "ApplicationQueue.h"
 
 class PendingApps
 {
   public:
-    PendingApps();
+    PendingApps(ApplicationQueue **);
     ~PendingApps();
 
     void initPendApps();
@@ -20,6 +21,7 @@ class PendingApps
 
     PendingChoose* choosePage;
     PendingOneCourse* onePage;
+    ApplicationQueue **applications;
 
 };
 #endif
