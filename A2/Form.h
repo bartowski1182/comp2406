@@ -35,7 +35,7 @@ class Form
 
     //Data Members
     bool cont;
-    int index, which_menu;
+    int index, which_menu, stuType;
     int nBreaker;
     std::string course;
 

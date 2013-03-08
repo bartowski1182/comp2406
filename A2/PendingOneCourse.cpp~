@@ -202,11 +202,9 @@ int PendingOneCourse::handleSelection(int selection)
       break;
 
     case 2:
-      nBreaker = selection;
       break;
  
     case 3:
-      nBreaker = selection;
       break;
    
     case (char)KEY_F(2):
@@ -327,7 +325,5 @@ void PendingOneCourse::initPendOCourse()
       break;
   }
   
-    mvprintw(LINES - 2, 0, "Index is currently %d\n", index);
-    getch();
   noecho();
 }

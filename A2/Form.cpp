@@ -1,7 +1,7 @@
 #include "Form.h"
 using namespace std;
 
-Form::Form(ApplicationQueue **aq) : index(1), nBreaker(0), cont(false), course("Spanish"), which_menu(-1),
+Form::Form(ApplicationQueue **aq) : index(1), nBreaker(0), cont(false), course("Spanish"), which_menu(-1), stuType(0),
                                     page1_1(0), page1_2(0), page2(0), page3(0), page4(0), applications(aq), 
                                     cRQueue(0), tACQueue(0), wEQueue(0), newApp(0), newStu(0)
 {
@@ -72,12 +72,12 @@ int Form::update()
       
 
       if(which_menu == 1) {
-        page1_1 = new USGenInfo(&course, &newStu);
+        page1_1 = new USGenInfo(&course, &newStu, &stuType);
         cont = page1_1 -> initGenInfo();
         delete page1_1;
       }
       else if(which_menu == 2) {
-        page1_2 = new GGenInfo(&course, &newStu);
+        page1_2 = new GGenInfo(&course, &newStu, &stuType);
         cont = page1_2 -> initGenInfo();
         delete page1_2;
       }
@@ -143,7 +143,7 @@ int Form::allValid()
 {
   //Add the valid application to the Queue
   //GOING TO NEED AN INT WHICH WILL TELL WHAT TYPE OF STUDENT
-  newApp = new Application(course, "pending", newStu, 0, cRQueue, tACQueue, wEQueue);
+  newApp = new Application(course, "pending", newStu, stuType, cRQueue, tACQueue, wEQueue);
 
   if((*applications) == 0)
     (*applications) = new ApplicationQueue;

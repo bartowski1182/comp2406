@@ -1,7 +1,7 @@
 #include "GGenInfo.h"
 using namespace std;
 
-GGenInfo::GGenInfo(std::string* s, Student** stu) : index(1), course(s), nBreaker(0), newStu(stu), courseList(0), researchAreaList(0), courseIndex(1), researchIndex(1), cancel(false)
+GGenInfo::GGenInfo(std::string* s, Student** stu, int *type) : index(1), course(s), nBreaker(0), newStu(stu), courseList(0), researchAreaList(0), courseIndex(1), researchIndex(1), cancel(false), stuType(type)
 {
 
   labels[0] = "First Name:";
@@ -488,6 +488,7 @@ int GGenInfo::handleAccept()
   {
     *newStu = new GradStudent(textFields[0], textFields[1], textFields[2], textFields[3],
                                    researchArea, textFields[4], textFields[5]);
+    *stuType = 1;
     mvprintw(LINES - 2, 0, "Student has successfully been created!");
     nBreaker = index;
     return 1;
@@ -675,8 +676,6 @@ bool GGenInfo::initGenInfo()
   researchArea = researchAreaList[researchIndex];
 
 
-  mvprintw(0, 0, "THis is the message %d", a);
-  getch();
 
   drawGenInfo(index);
 

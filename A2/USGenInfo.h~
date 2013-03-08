@@ -14,8 +14,8 @@
 class USGenInfo
 {
   public:
-    GenInfo(std::string*, Student**);
-    ~GenInfo();
+    USGenInfo(std::string*, Student**, int*);
+    ~USGenInfo();
 
     //Function
     bool initGenInfo();
@@ -33,7 +33,7 @@ class USGenInfo
     bool cancel;
     int index;
     int courseIndex;
-    int nBreaker;
+    int nBreaker, stuType;
     std::string *course;
     std::string *courseList;
 

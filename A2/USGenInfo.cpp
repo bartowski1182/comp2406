@@ -1,7 +1,7 @@
 #include "USGenInfo.h"
 using namespace std;
 
-USGenInfo::USGenInfo(std::string* s, Student** stu) : index(1), course(s), nBreaker(0), newStu(stu), courseList(0), courseIndex(1), cancel(false)
+USGenInfo::USGenInfo(std::string* s, Student** stu, int* type) : index(1), course(s), nBreaker(0), newStu(stu), courseList(0), courseIndex(1), cancel(false), stuType(type)
 {
 
   labels[0] = "First Name:";
@@ -382,6 +382,7 @@ int USGenInfo::handleAccept()
   {
     *newStu = new UndergradStudent(textFields[0], textFields[1], textFields[2], textFields[3],
                                    textFields[4], textFields[5], textFields[6], textFields[7]);
+    *stuType = 0;
     mvprintw(LINES - 2, 0, "Student has successfully been created!");
     nBreaker = index;
     return 1;

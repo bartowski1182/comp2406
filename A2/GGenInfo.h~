@@ -35,9 +35,9 @@ class GGenInfo
     bool cancel;
     int index;
     int courseIndex, researchIndex;
-    int nBreaker;
+    int nBreaker, *stuType;
     std::string *course;
-    std::string *researchArea;
+    std::string researchArea;
     std::string *courseList;
     std::string *researchAreaList;
 

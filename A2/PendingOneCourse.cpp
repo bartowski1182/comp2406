@@ -198,11 +198,9 @@ int PendingOneCourse::handleSelection(int selection)
   switch(selection)
   {
     case 1: //
-      nBreaker = selection;
       break;
 
     case 2:
-      nBreaker = selection;
       break;
  
     case 3:

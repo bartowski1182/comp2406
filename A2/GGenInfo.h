@@ -14,7 +14,7 @@
 class GGenInfo
 {
   public:
-    GGenInfo(std::string*, Student**);
+    GGenInfo(std::string*, Student**, int*);
     ~GGenInfo();
 
     //Function
@@ -35,7 +35,7 @@ class GGenInfo
     bool cancel;
     int index;
     int courseIndex, researchIndex;
-    int nBreaker;
+    int nBreaker, *stuType;
     std::string *course;
     std::string researchArea;
     std::string *courseList;

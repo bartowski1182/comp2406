@@ -26,6 +26,8 @@ void ApplicationIO::saveApplications(ApplicationQueue* appQ) const
 
   ApplicationQueue::Node* current = appQ->getHead();
 
+  
+
   system("exec rm -r ./Applications/*");
 
   ofstream appList("./Applications/ApplicationList.txt", ios::app);
@@ -109,7 +111,21 @@ void ApplicationIO::saveApplications(ApplicationQueue* appQ) const
 
 }
 /*
-string[] 
+int ApplicationIO::loadSummary(std::string **pointer){
+  
+  
+
+}
+
+int ApplicationIO::loadCourseApplications(std::string **pointer, std::string courseName){
+
+  string course = "./Applications/" + courseName + "/ApplicationList.txt";
+
+  ifstream courseApps(course.c_str());
+
+  
+
+}
 
 void ApplicationIO::loadApplications(ApplicationQueue* appQ) const
 {

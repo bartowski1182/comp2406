@@ -1,7 +1,7 @@
-#include "GenInfo.h"
+#include "USGenInfo.h"
 using namespace std;
 
-GenInfo::GenInfo(std::string* s, Student** stu) : index(1), course(s), nBreaker(0), newStu(stu), courseList(0), courseIndex(1), cancel(false)
+USGenInfo::USGenInfo(std::string* s, Student** stu, int* type) : index(1), course(s), nBreaker(0), newStu(stu), courseList(0), courseIndex(1), cancel(false), stuType(type)
 {
 
   labels[0] = "First Name:";
@@ -36,7 +36,7 @@ GenInfo::GenInfo(std::string* s, Student** stu) : index(1), course(s), nBreaker(
   }
 }
 
-GenInfo::~GenInfo()
+USGenInfo::~USGenInfo()
 {
   delete[] courseList;
 }
@@ -44,7 +44,7 @@ GenInfo::~GenInfo()
 ////////////////////////////////////////////////////////////////////////////
 //<summary> Creates the GUI... draws the labels and textfields  </summary>//
 ////////////////////////////////////////////////////////////////////////////
-void GenInfo::drawGenInfo(int selection)
+void USGenInfo::drawGenInfo(int selection)
 {
   int x, lx, y, ly, i;
   char c[GIMAX_BUF + 1];
@@ -167,7 +167,7 @@ void GenInfo::drawGenInfo(int selection)
 ////////////////////////////////////////////////////////////////////
 //<summary> Draws the course selector view </summary>             //
 ////////////////////////////////////////////////////////////////////
-int GenInfo::drawCourseView(int selection)
+int USGenInfo::drawCourseView(int selection)
 {
   int x, y, i;
   char c[GIMAX_BUF + 1];
@@ -218,7 +218,7 @@ int GenInfo::drawCourseView(int selection)
 ////////////////////////////////////////////////////////////////////
 //<summary> Deal with any character the user might input</summary>//
 ////////////////////////////////////////////////////////////////////
-int GenInfo::handleInput(char c)
+int USGenInfo::handleInput(char c)
 {
   
   switch(c)
@@ -287,7 +287,7 @@ int GenInfo::handleInput(char c)
 //<summary> Figures out what to do based on index's      //
 //          value  </summary>                            //
 ///////////////////////////////////////////////////////////
-int GenInfo::handleSelection(int selection)
+int USGenInfo::handleSelection(int selection)
 {
   if(index == 0)
   {
@@ -330,7 +330,7 @@ int GenInfo::handleSelection(int selection)
 //<summary> Calls error checking functions to make sure   //
 //          that the textFields are valid.  </summary>    //
 ////////////////////////////////////////////////////////////
-int GenInfo::handleAccept()
+int USGenInfo::handleAccept()
 {
   /*This is where we would do all the checking, have *
    *a boolean that would go false if one of the      *
@@ -398,7 +398,7 @@ int GenInfo::handleAccept()
 ////////////////////////////////////////////////////////////////////
 //<summary> Draw the list of courses </summary>                   //
 ////////////////////////////////////////////////////////////////////
-int GenInfo::initCourseView(int prevIndex)
+int USGenInfo::initCourseView(int prevIndex)
 {
   clear();
   
@@ -473,7 +473,7 @@ int GenInfo::initCourseView(int prevIndex)
 ////////////////////////////////////////////////////////////
 //<summary> Creates the form                    </summary>//
 ////////////////////////////////////////////////////////////  
-bool GenInfo::initGenInfo()
+bool USGenInfo::initGenInfo()
 {
   clear();
 
