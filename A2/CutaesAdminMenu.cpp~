@@ -147,7 +147,7 @@ int CutaesAdminMenu::handleSelection(int selection)
       break;
 
     case 3: //Summary of pending applications
-      pending = new PendingApps();
+      pending = new PendingApps(applications);
       pending -> initPendApps();
       delete pending;
 

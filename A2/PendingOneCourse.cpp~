@@ -30,7 +30,7 @@ void PendingOneCourse::drawPendOCourse(int selection)
   clear();
 
   int lx, ly, i;
-  char c[46];
+  char c[100];
 
   
   for(int j = 0; j < 45; j++)
@@ -84,6 +84,16 @@ void PendingOneCourse::drawPendOCourse(int selection)
   //For actual pending applications summaries
   mvprintw(currViewApp + 4, 6, "THIS IS A SENTENCE");
   mvprintw(LINES - 1, 0, "currViewApp is %d", currViewApp);
+  if (applications != 0) {
+    for(int i = 0; i < arraySize; i++)
+    {
+      if (appArray[i] -> getCourse() == course)
+      {
+
+      //mvprintw(currViewApp + 5, 6, );
+      }
+    }
+  }
 
   move(LINES - 2, 0);
 }
@@ -322,7 +332,7 @@ void PendingOneCourse::initPendOCourse()
   if (*applications != 0)
     arraySize = (*applications) -> setQueueIntoArray(&appArray);
 
-  mvprintw(LINES - 3, 0, "After the array thing %d\n", index);
+  mvprintw(LINES - 3, 0, "After the array thing %d\n", arraySize);
   getch();
 
   char c;

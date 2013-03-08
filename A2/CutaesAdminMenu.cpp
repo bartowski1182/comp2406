@@ -35,9 +35,9 @@ void CutaesAdminMenu::drawAdminMenu(int selection)
 {
   clear();
   
-  mvprintw(5, 20, "----------------------------------------");
-  mvprintw(6, 20, "--------       Admin Menu      ---------");
-  mvprintw(7, 20, "----------------------------------------");
+  mvprintw(5, COLS/3, "----------------------------------------");
+  mvprintw(6, COLS/3, "--------       Admin Menu      ---------");
+  mvprintw(7, COLS/3, "----------------------------------------");
 
   int lx, ly, i;
   char c[46];

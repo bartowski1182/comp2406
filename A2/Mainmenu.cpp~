@@ -166,6 +166,8 @@ void Mainmenu::initCutaes()
       break;
   }
 
+
+
   saving.saveApplications(applications);
   
   noecho();
